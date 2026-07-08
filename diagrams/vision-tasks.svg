@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 440" font-family="Segoe UI, Arial, sans-serif" role="img" aria-label="Computer vision tasks">
+<rect width="900" height="440" fill="#ffffff"/>
+<defs><marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#5b6b7b"/></marker></defs>
+<text x="450.0" y="34" text-anchor="middle" font-size="22" font-weight="600" fill="#16324f">Computer vision tasks</text>
+<rect x="70" y="70" width="360" height="150" rx="10" fill="#e6f4e6" stroke="#107c10" stroke-width="2"/>
+<text x="250" y="110" text-anchor="middle" font-size="15.5" font-weight="600" fill="#107c10">Image classification</text>
+<text x="250" y="140" text-anchor="middle" font-size="13" font-weight="normal" fill="#5b6b7b">Assign a single label to the</text>
+<text x="250" y="162" text-anchor="middle" font-size="13" font-weight="normal" fill="#5b6b7b">whole image: &quot;apple&quot;</text>
+<rect x="460" y="70" width="360" height="150" rx="10" fill="#e6f4e6" stroke="#107c10" stroke-width="2"/>
+<text x="640" y="110" text-anchor="middle" font-size="15.5" font-weight="600" fill="#107c10">Object detection</text>
+<text x="640" y="140" text-anchor="middle" font-size="13" font-weight="normal" fill="#5b6b7b">Locate each object with a</text>
+<text x="640" y="162" text-anchor="middle" font-size="13" font-weight="normal" fill="#5b6b7b">bounding box + class label</text>
+<rect x="70" y="240" width="360" height="150" rx="10" fill="#e6f4e6" stroke="#107c10" stroke-width="2"/>
+<text x="250" y="280" text-anchor="middle" font-size="15.5" font-weight="600" fill="#107c10">Semantic segmentation</text>
+<text x="250" y="310" text-anchor="middle" font-size="13" font-weight="normal" fill="#5b6b7b">Classify every pixel —</text>
+<text x="250" y="332" text-anchor="middle" font-size="13" font-weight="normal" fill="#5b6b7b">exact object outlines</text>
+<rect x="460" y="240" width="360" height="150" rx="10" fill="#e6f4e6" stroke="#107c10" stroke-width="2"/>
+<text x="640" y="280" text-anchor="middle" font-size="15.5" font-weight="600" fill="#107c10">Contextual image analysis</text>
+<text x="640" y="310" text-anchor="middle" font-size="13" font-weight="normal" fill="#5b6b7b">Describe the scene:</text>
+<text x="640" y="332" text-anchor="middle" font-size="13" font-weight="normal" fill="#5b6b7b">&quot;a person eating an apple&quot;</text>
+<text x="450" y="420" text-anchor="middle" font-size="13.5" font-weight="normal" fill="#5b6b7b">All manipulate and analyze pixel values, increasingly via multimodal models</text>
+</svg>

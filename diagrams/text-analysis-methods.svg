@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 460" font-family="Segoe UI, Arial, sans-serif" role="img" aria-label="Text analysis in Foundry: choosing the right method">
+<rect width="900" height="460" fill="#ffffff"/>
+<defs><marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#5b6b7b"/></marker></defs>
+<text x="450.0" y="34" text-anchor="middle" font-size="22" font-weight="600" fill="#16324f">Text analysis in Foundry: choosing the right method</text>
+<rect x="60" y="70" width="370" height="320" rx="10" fill="#e8f1fb" stroke="#0b5cab" stroke-width="2"/>
+<text x="245" y="105" text-anchor="middle" font-size="15.5" font-weight="600" fill="#0b5cab">General-purpose AI models</text>
+<text x="245" y="128" text-anchor="middle" font-size="12.5" font-weight="normal" fill="#5b6b7b">(prompt an LLM, e.g. gpt-4.1-mini)</text>
+<text x="245" y="158" text-anchor="middle" font-size="13" font-weight="normal" fill="#5b6b7b">✓ Flexible, conversational analysis</text>
+<text x="245" y="182" text-anchor="middle" font-size="13" font-weight="normal" fill="#5b6b7b">✓ Multiple tasks in one call</text>
+<text x="245" y="206" text-anchor="middle" font-size="13" font-weight="normal" fill="#5b6b7b">✓ Natural-language responses</text>
+<text x="245" y="230" text-anchor="middle" font-size="13" font-weight="normal" fill="#5b6b7b">✓ Exploratory workflows</text>
+<text x="245" y="254" text-anchor="middle" font-size="13" font-weight="normal" fill="#5b6b7b"></text>
+<text x="245" y="278" text-anchor="middle" font-size="13" font-weight="normal" fill="#5b6b7b">✗ Probabilistic — results can vary</text>
+<text x="245" y="302" text-anchor="middle" font-size="13" font-weight="normal" fill="#5b6b7b">   between identical calls</text>
+<rect x="470" y="70" width="370" height="320" rx="10" fill="#e6f4e6" stroke="#107c10" stroke-width="2"/>
+<text x="655" y="105" text-anchor="middle" font-size="15.5" font-weight="600" fill="#107c10">Azure Language (Foundry Tools)</text>
+<text x="655" y="128" text-anchor="middle" font-size="12.5" font-weight="normal" fill="#5b6b7b">(dedicated prebuilt service + SDK)</text>
+<text x="655" y="158" text-anchor="middle" font-size="13" font-weight="normal" fill="#5b6b7b">✓ Deterministic, structured output</text>
+<text x="655" y="182" text-anchor="middle" font-size="13" font-weight="normal" fill="#5b6b7b">✓ Confidence scores per result</text>
+<text x="655" y="206" text-anchor="middle" font-size="13" font-weight="normal" fill="#5b6b7b">✓ Production pipelines at scale</text>
+<text x="655" y="230" text-anchor="middle" font-size="13" font-weight="normal" fill="#5b6b7b">✓ PII detection for regulated data</text>
+<text x="655" y="254" text-anchor="middle" font-size="13" font-weight="normal" fill="#5b6b7b">✓ Language detection, NER, health</text>
+<text x="655" y="278" text-anchor="middle" font-size="13" font-weight="normal" fill="#5b6b7b"></text>
+<text x="655" y="302" text-anchor="middle" font-size="13" font-weight="normal" fill="#5b6b7b">Strength: reproducible results</text>
+<text x="450" y="425" text-anchor="middle" font-size="13.5" font-weight="normal" fill="#5b6b7b">Same input → same output needed?  Pick Azure Language.  Flexibility needed?  Prompt a model.</text>
+</svg>

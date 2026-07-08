@@ -1,0 +1,1255 @@
+<!doctype html><html><head><meta charset='utf-8'><title>AI-901 Complete Course</title><style>
+@page { size: A4; margin: 18mm 16mm; }
+* { box-sizing: border-box; }
+body { font-family: 'Segoe UI', Arial, sans-serif; color: #16324f; font-size: 11.5pt;
+       line-height: 1.55; margin: 0; }
+h1 { font-size: 22pt; color: #0b5cab; border-bottom: 3px solid #0b5cab;
+     padding-bottom: 6px; margin: 0 0 14px; }
+h2 { font-size: 15pt; color: #0b5cab; margin: 22px 0 8px; }
+h3 { font-size: 12.5pt; color: #16324f; }
+table { border-collapse: collapse; width: 100%; margin: 10px 0; font-size: 10.5pt; }
+th, td { border: 1px solid #b9cde3; padding: 6px 9px; text-align: left; vertical-align: top; }
+th { background: #e8f1fb; color: #0b5cab; }
+code { background: #f0f4f9; padding: 1px 5px; border-radius: 4px; font-size: 10pt;
+       font-family: Consolas, monospace; }
+pre { background: #10233a; color: #dce9f7; padding: 12px 14px; border-radius: 8px;
+      font-size: 9.5pt; overflow-x: hidden; white-space: pre-wrap; }
+pre code { background: none; color: inherit; padding: 0; }
+blockquote { border-left: 4px solid #0b5cab; background: #f2f7fd; margin: 12px 0;
+             padding: 8px 14px; border-radius: 0 8px 8px 0; }
+img { max-width: 100%; margin: 12px auto; display: block; }
+a { color: #0b5cab; }
+.module { page-break-before: always; }
+.cover { page-break-after: always; text-align: center; padding-top: 220px; }
+.cover h1 { border: none; font-size: 34pt; }
+.cover .sub { font-size: 15pt; color: #5b6b7b; margin-top: 8px; }
+.cover .meta { margin-top: 60px; color: #5b6b7b; font-size: 11pt; }
+.toc { page-break-after: always; }
+.toc li { margin: 7px 0; font-size: 12.5pt; }
+.footer-note { color: #8296aa; font-size: 9pt; margin-top: 40px; }
+</style></head><body>
+<div class="cover">
+  <h1>AI-901<br/>Introduction to AI in Azure</h1>
+  <div class="sub">Complete Course &mdash; Study Notes, Diagrams &amp; Exam Preparation</div>
+  <div class="meta">
+    Faculty Study Kit &middot; Original content authored from public Microsoft Learn documentation<br/>
+    Exam weights: Identify AI concepts &amp; capabilities (~40%) &middot;
+    Implement AI solutions with Microsoft Foundry (~60%)
+  </div>
+</div>
+<div class="toc"><h1>Contents</h1><ol><li><a href="#m01">Module 1 — AI Concepts & Getting Started with AI in Azure</a></li><li><a href="#m02">Module 2 — Generative AI and Agents</a></li><li><a href="#m03">Module 3 — Natural Language Processing & Text Analysis</a></li><li><a href="#m04">Module 4 — AI Speech</a></li><li><a href="#m05">Module 5 — Computer Vision</a></li><li><a href="#m06">Module 6 — Information Extraction</a></li></ol><p class='footer-note'>All diagrams and text in this document are original works created for this study kit. No Microsoft courseware material is reproduced. Official learning content: https://aka.ms/mslearn-ai-901</p></div><div class="module" id="m01"><h1>Module 1 — AI Concepts &amp; Getting Started with AI in Azure</h1>
+<blockquote>
+<p><strong>Exam mapping:</strong> <em>Identify AI concepts and capabilities</em> (~40%) and the foundations of
+<em>Implement AI solutions with Microsoft Foundry</em> (~60%).
+<strong>Public references:</strong> <a href="https://aka.ms/mslearn-ai-concepts">https://aka.ms/mslearn-ai-concepts</a> · <a href="https://aka.ms/mslearn-get-started-azure-ai">https://aka.ms/mslearn-get-started-azure-ai</a></p>
+</blockquote>
+<hr />
+<h2>1.1 What is Artificial Intelligence?</h2>
+<p>Artificial Intelligence (AI) is <strong>software that imitates human capabilities</strong>. In practice that
+means software able to:</p>
+<ul>
+<li><strong>predict outcomes and recognize patterns</strong> from historic data,</li>
+<li><strong>evaluate content and make decisions</strong>, then take an appropriate action,</li>
+<li><strong>understand and generate language</strong>, holding natural conversations,</li>
+<li><strong>interpret visual input</strong> such as images and video,</li>
+<li><strong>extract information</strong> from documents and media to build knowledge.</li>
+</ul>
+<p>AI is transforming business, education, healthcare, manufacturing, agriculture and more — but
+every capability above ultimately rests on <strong>machine learning (ML)</strong>: models trained on data to
+map an input to an output, conceptually <code>f(x) = y</code>.</p>
+<h2>1.2 The five common AI workloads</h2>
+<p><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 430" font-family="Segoe UI, Arial, sans-serif" role="img" aria-label="Common AI workloads">
+<rect width="900" height="430" fill="#ffffff"/>
+<defs><marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#5b6b7b"/></marker></defs>
+<text x="450.0" y="34" text-anchor="middle" font-size="22" font-weight="600" fill="#16324f">Common AI workloads</text>
+<rect x="40" y="75" width="152" height="190" rx="10" fill="#e8f1fb" stroke="#0b5cab" stroke-width="2"/>
+<text x="116" y="115" text-anchor="middle" font-size="14" font-weight="600" fill="#0b5cab">Generative AI</text>
+<text x="116" y="135" text-anchor="middle" font-size="14" font-weight="600" fill="#0b5cab">&amp; agents</text>
+<text x="116" y="170" text-anchor="middle" font-size="11.5" font-weight="normal" fill="#5b6b7b">Create content; act</text>
+<text x="116" y="189" text-anchor="middle" font-size="11.5" font-weight="normal" fill="#5b6b7b">on a user&#x27;s behalf</text>
+<rect x="208" y="75" width="152" height="190" rx="10" fill="#e3f5f5" stroke="#038387" stroke-width="2"/>
+<text x="284" y="115" text-anchor="middle" font-size="14" font-weight="600" fill="#038387">Text &amp;</text>
+<text x="284" y="135" text-anchor="middle" font-size="14" font-weight="600" fill="#038387">language</text>
+<text x="284" y="170" text-anchor="middle" font-size="11.5" font-weight="normal" fill="#5b6b7b">Infer meaning from</text>
+<text x="284" y="189" text-anchor="middle" font-size="11.5" font-weight="normal" fill="#5b6b7b">written language</text>
+<rect x="376" y="75" width="152" height="190" rx="10" fill="#f3ecfe" stroke="#7a3ee8" stroke-width="2"/>
+<text x="452" y="115" text-anchor="middle" font-size="14" font-weight="600" fill="#7a3ee8">Computer</text>
+<text x="452" y="135" text-anchor="middle" font-size="14" font-weight="600" fill="#7a3ee8">speech</text>
+<text x="452" y="170" text-anchor="middle" font-size="11.5" font-weight="normal" fill="#5b6b7b">Recognize &amp;</text>
+<text x="452" y="189" text-anchor="middle" font-size="11.5" font-weight="normal" fill="#5b6b7b">synthesize spoken</text>
+<text x="452" y="208" text-anchor="middle" font-size="11.5" font-weight="normal" fill="#5b6b7b">language</text>
+<rect x="544" y="75" width="152" height="190" rx="10" fill="#e6f4e6" stroke="#107c10" stroke-width="2"/>
+<text x="620" y="115" text-anchor="middle" font-size="14" font-weight="600" fill="#107c10">Computer</text>
+<text x="620" y="135" text-anchor="middle" font-size="14" font-weight="600" fill="#107c10">vision</text>
+<text x="620" y="170" text-anchor="middle" font-size="11.5" font-weight="normal" fill="#5b6b7b">Interpret images and</text>
+<text x="620" y="189" text-anchor="middle" font-size="11.5" font-weight="normal" fill="#5b6b7b">video</text>
+<rect x="712" y="75" width="152" height="190" rx="10" fill="#fdeee3" stroke="#c74e0c" stroke-width="2"/>
+<text x="788" y="115" text-anchor="middle" font-size="14" font-weight="600" fill="#c74e0c">Information</text>
+<text x="788" y="135" text-anchor="middle" font-size="14" font-weight="600" fill="#c74e0c">extraction</text>
+<text x="788" y="170" text-anchor="middle" font-size="11.5" font-weight="normal" fill="#5b6b7b">Turn documents &amp;</text>
+<text x="788" y="189" text-anchor="middle" font-size="11.5" font-weight="normal" fill="#5b6b7b">media into data</text>
+<rect x="40" y="295" width="820" height="95" rx="10" fill="#10324f" stroke="#10324f" stroke-width="2"/>
+<text x="450" y="335" text-anchor="middle" font-size="17" font-weight="600" fill="#ffffff">Machine learning   —   f(x) = y</text>
+<text x="450" y="362" text-anchor="middle" font-size="13" font-weight="normal" fill="#cfe0f0">Models trained on historic data underpin every AI workload</text>
+</svg></p>
+<table>
+<thead>
+<tr>
+<th>Workload</th>
+<th>What it does</th>
+<th>Typical examples</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Generative AI &amp; agents</strong></td>
+<td>Creates original content from prompts; agents act on a user's behalf</td>
+<td>Chat assistants, copilots, automated workflows</td>
+</tr>
+<tr>
+<td><strong>Text &amp; language (NLP)</strong></td>
+<td>Infers meaning from written language</td>
+<td>Sentiment analysis, entity extraction, summarization</td>
+</tr>
+<tr>
+<td><strong>Computer speech</strong></td>
+<td>Recognizes and synthesizes spoken language</td>
+<td>Transcription, voice assistants, screen readers</td>
+</tr>
+<tr>
+<td><strong>Computer vision</strong></td>
+<td>Interprets images and video</td>
+<td>Object detection, image captioning</td>
+</tr>
+<tr>
+<td><strong>Information extraction</strong></td>
+<td>Converts documents/media into structured data</td>
+<td>Invoice processing, call analysis</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Key distinctions the exam loves:</strong>
+- <em>Generative AI</em> uses a <strong>language model to create original content in response to a prompt</strong> —
+  it is <strong>not</strong> an "old" form of AI, and it is <strong>not</strong> restricted to data scientists.
+- An <strong>AI agent</strong> is <em>an application</em> that can perform tasks on behalf of a user — not a person.</p>
+<h2>1.3 Responsible AI — the six principles</h2>
+<p><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 400" font-family="Segoe UI, Arial, sans-serif" role="img" aria-label="Microsoft&#x27;s six principles of responsible AI">
+<rect width="900" height="400" fill="#ffffff"/>
+<defs><marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#5b6b7b"/></marker></defs>
+<text x="450.0" y="34" text-anchor="middle" font-size="22" font-weight="600" fill="#16324f">Microsoft&#x27;s six principles of responsible AI</text>
+<rect x="55" y="70" width="250" height="135" rx="10" fill="#e8f1fb" stroke="#0b5cab" stroke-width="2"/>
+<text x="180" y="105" text-anchor="middle" font-size="15.5" font-weight="600" fill="#0b5cab">Fairness</text>
+<text x="180" y="132" text-anchor="middle" font-size="12" font-weight="normal" fill="#5b6b7b">Treat all people equitably;</text>
+<text x="180" y="151" text-anchor="middle" font-size="12" font-weight="normal" fill="#5b6b7b">avoid bias in data &amp;</text>
+<text x="180" y="170" text-anchor="middle" font-size="12" font-weight="normal" fill="#5b6b7b">predictions</text>
+<rect x="330" y="70" width="250" height="135" rx="10" fill="#e8f1fb" stroke="#0b5cab" stroke-width="2"/>
+<text x="455" y="105" text-anchor="middle" font-size="15.5" font-weight="600" fill="#0b5cab">Reliability &amp; safety</text>
+<text x="455" y="132" text-anchor="middle" font-size="12" font-weight="normal" fill="#5b6b7b">Operate within defined limits;</text>
+<text x="455" y="151" text-anchor="middle" font-size="12" font-weight="normal" fill="#5b6b7b">test rigorously</text>
+<rect x="605" y="70" width="250" height="135" rx="10" fill="#e8f1fb" stroke="#0b5cab" stroke-width="2"/>
+<text x="730" y="105" text-anchor="middle" font-size="15.5" font-weight="600" fill="#0b5cab">Privacy &amp; security</text>
+<text x="730" y="132" text-anchor="middle" font-size="12" font-weight="normal" fill="#5b6b7b">Protect data used for training</text>
+<text x="730" y="151" text-anchor="middle" font-size="12" font-weight="normal" fill="#5b6b7b">and inference</text>
+<rect x="55" y="225" width="250" height="135" rx="10" fill="#e8f1fb" stroke="#0b5cab" stroke-width="2"/>
+<text x="180" y="260" text-anchor="middle" font-size="15.5" font-weight="600" fill="#0b5cab">Inclusiveness</text>
+<text x="180" y="287" text-anchor="middle" font-size="12" font-weight="normal" fill="#5b6b7b">Empower everyone, including</text>
+<text x="180" y="306" text-anchor="middle" font-size="12" font-weight="normal" fill="#5b6b7b">all abilities</text>
+<rect x="330" y="225" width="250" height="135" rx="10" fill="#e8f1fb" stroke="#0b5cab" stroke-width="2"/>
+<text x="455" y="260" text-anchor="middle" font-size="15.5" font-weight="600" fill="#0b5cab">Transparency</text>
+<text x="455" y="287" text-anchor="middle" font-size="12" font-weight="normal" fill="#5b6b7b">Make purpose, behavior &amp;</text>
+<text x="455" y="306" text-anchor="middle" font-size="12" font-weight="normal" fill="#5b6b7b">limits understandable</text>
+<rect x="605" y="225" width="250" height="135" rx="10" fill="#e8f1fb" stroke="#0b5cab" stroke-width="2"/>
+<text x="730" y="260" text-anchor="middle" font-size="15.5" font-weight="600" fill="#0b5cab">Accountability</text>
+<text x="730" y="287" text-anchor="middle" font-size="12" font-weight="normal" fill="#5b6b7b">People remain answerable for</text>
+<text x="730" y="306" text-anchor="middle" font-size="12" font-weight="normal" fill="#5b6b7b">AI systems</text>
+</svg></p>
+<table>
+<thead>
+<tr>
+<th>Principle</th>
+<th>One-line meaning</th>
+<th>Classic exam scenario</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Fairness</strong></td>
+<td>Treat all people equitably; avoid bias</td>
+<td>A loan model must not disadvantage a demographic group</td>
+</tr>
+<tr>
+<td><strong>Reliability &amp; safety</strong></td>
+<td>Work correctly within defined limits; test rigorously</td>
+<td>Autonomous vehicle / medical prediction must be validated</td>
+</tr>
+<tr>
+<td><strong>Privacy &amp; security</strong></td>
+<td>Protect the data used to train and run models</td>
+<td>Personal data must be secured during training &amp; inference</td>
+</tr>
+<tr>
+<td><strong>Inclusiveness</strong></td>
+<td>Benefit everyone, including people with disabilities</td>
+<td>Add captions/audio descriptions to reach all users</td>
+</tr>
+<tr>
+<td><strong>Transparency</strong></td>
+<td>Users should understand purpose, behavior, and limits</td>
+<td>Publish what data a system uses and how it decides</td>
+</tr>
+<tr>
+<td><strong>Accountability</strong></td>
+<td>Humans stay answerable for AI decisions</td>
+<td>Governance framework; a person can override the system</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><strong>Tip:</strong> questions usually describe a scenario and ask <em>which principle applies</em>. Match the
+action word: bias→Fairness, testing→Reliability, personal data→Privacy, disability→Inclusiveness,
+"explain/understand"→Transparency, "who is responsible"→Accountability.</p>
+</blockquote>
+<h2>1.4 Microsoft Azure — where AI solutions live</h2>
+<p><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 460" font-family="Segoe UI, Arial, sans-serif" role="img" aria-label="Microsoft Azure: organizational hierarchy">
+<rect width="900" height="460" fill="#ffffff"/>
+<defs><marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#5b6b7b"/></marker></defs>
+<text x="450.0" y="34" text-anchor="middle" font-size="22" font-weight="600" fill="#16324f">Microsoft Azure: organizational hierarchy</text>
+<rect x="60" y="60" width="780" height="370" rx="10" fill="#f4f8fd" stroke="#0b5cab" stroke-width="2"/>
+<text x="140" y="90" text-anchor="middle" font-size="17" font-weight="600" fill="#0b5cab">Tenant</text>
+<text x="640" y="90" text-anchor="middle" font-size="13" font-weight="normal" fill="#5b6b7b">Security boundary — identities via Microsoft Entra ID</text>
+<rect x="100" y="110" width="700" height="290" rx="10" fill="#eef5fc" stroke="#0b5cab" stroke-width="2"/>
+<text x="200" y="140" text-anchor="middle" font-size="16" font-weight="600" fill="#0b5cab">Subscription</text>
+<text x="620" y="140" text-anchor="middle" font-size="13" font-weight="normal" fill="#5b6b7b">Billing boundary</text>
+<rect x="140" y="160" width="620" height="210" rx="10" fill="#e8f1fb" stroke="#0b5cab" stroke-width="2"/>
+<text x="265" y="190" text-anchor="middle" font-size="15" font-weight="600" fill="#0b5cab">Resource group</text>
+<text x="600" y="190" text-anchor="middle" font-size="13" font-weight="normal" fill="#5b6b7b">Organization &amp; management</text>
+<rect x="180" y="215" width="170" height="120" rx="10" fill="#ffffff" stroke="#0b5cab" stroke-width="2"/>
+<text x="265" y="265" text-anchor="middle" font-size="14" font-weight="600" fill="#16324f">Microsoft Foundry</text>
+<text x="265" y="290" text-anchor="middle" font-size="12" font-weight="normal" fill="#5b6b7b">AI apps &amp; agents</text>
+<rect x="370" y="215" width="170" height="120" rx="10" fill="#ffffff" stroke="#0b5cab" stroke-width="2"/>
+<text x="455" y="265" text-anchor="middle" font-size="14" font-weight="600" fill="#16324f">App Service</text>
+<text x="455" y="290" text-anchor="middle" font-size="12" font-weight="normal" fill="#5b6b7b">Web apps</text>
+<rect x="560" y="215" width="170" height="120" rx="10" fill="#ffffff" stroke="#0b5cab" stroke-width="2"/>
+<text x="645" y="265" text-anchor="middle" font-size="14" font-weight="600" fill="#16324f">Storage / SQL</text>
+<text x="645" y="290" text-anchor="middle" font-size="12" font-weight="normal" fill="#5b6b7b">Data services</text>
+<text x="450" y="425" text-anchor="middle" font-size="13" font-weight="normal" fill="#5b6b7b">Resources = infrastructure &amp; application services — the building blocks of solutions</text>
+</svg></p>
+<ul>
+<li>A <strong>tenant</strong> is the organizational <strong>security boundary</strong>; identities (users, services) are
+  managed and authenticated through <strong>Microsoft Entra ID</strong>.</li>
+<li>A <strong>subscription</strong> is the <strong>billing boundary</strong> inside a tenant.</li>
+<li><strong>Resource groups</strong> organize and manage related resources.</li>
+<li><strong>Resources</strong> are the building blocks — including <strong>Microsoft Foundry</strong>, Azure's platform for
+  AI apps and agents.</li>
+</ul>
+<h2>1.5 Microsoft Foundry</h2>
+<p><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 460" font-family="Segoe UI, Arial, sans-serif" role="img" aria-label="Microsoft Foundry: resource, project, and assets">
+<rect width="900" height="460" fill="#ffffff"/>
+<defs><marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#5b6b7b"/></marker></defs>
+<text x="450.0" y="34" text-anchor="middle" font-size="22" font-weight="600" fill="#16324f">Microsoft Foundry: resource, project, and assets</text>
+<rect x="70" y="60" width="760" height="360" rx="10" fill="#f3ecfe" stroke="#7a3ee8" stroke-width="2"/>
+<text x="230" y="92" text-anchor="middle" font-size="16" font-weight="600" fill="#7a3ee8">Microsoft Foundry resource</text>
+<text x="640" y="92" text-anchor="middle" font-size="13" font-weight="normal" fill="#5b6b7b">Compute · storage · model delivery</text>
+<rect x="110" y="110" width="680" height="290" rx="10" fill="#ffffff" stroke="#7a3ee8" stroke-width="2" stroke-dasharray="6 5"/>
+<text x="260" y="140" text-anchor="middle" font-size="15" font-weight="600" fill="#7a3ee8">Microsoft Foundry project</text>
+<text x="620" y="140" text-anchor="middle" font-size="13" font-weight="normal" fill="#5b6b7b">Isolated work environment</text>
+<rect x="145" y="165" width="290" height="95" rx="10" fill="#e8f1fb" stroke="#0b5cab" stroke-width="2"/>
+<text x="290" y="203" text-anchor="middle" font-size="15" font-weight="600" fill="#0b5cab">Models</text>
+<text x="290" y="227" text-anchor="middle" font-size="12" font-weight="normal" fill="#5b6b7b">Choose &amp; deploy from the model catalog</text>
+<rect x="455" y="165" width="290" height="95" rx="10" fill="#e8f1fb" stroke="#0b5cab" stroke-width="2"/>
+<text x="600" y="203" text-anchor="middle" font-size="15" font-weight="600" fill="#0b5cab">Agents</text>
+<text x="600" y="227" text-anchor="middle" font-size="12" font-weight="normal" fill="#5b6b7b">Create &amp; manage agents that use models</text>
+<rect x="145" y="275" width="290" height="95" rx="10" fill="#e8f1fb" stroke="#0b5cab" stroke-width="2"/>
+<text x="290" y="313" text-anchor="middle" font-size="15" font-weight="600" fill="#0b5cab">Tools</text>
+<text x="290" y="337" text-anchor="middle" font-size="12" font-weight="normal" fill="#5b6b7b">Actions &amp; information access for agents</text>
+<rect x="455" y="275" width="290" height="95" rx="10" fill="#e8f1fb" stroke="#0b5cab" stroke-width="2"/>
+<text x="600" y="313" text-anchor="middle" font-size="15" font-weight="600" fill="#0b5cab">Knowledge</text>
+<text x="600" y="337" text-anchor="middle" font-size="12" font-weight="normal" fill="#5b6b7b">Data sources that ground agent responses</text>
+</svg></p>
+<p><strong>Microsoft Foundry</strong> is a unified platform for building AI apps and agents <strong>on top of Azure</strong>
+(it uses Azure compute, networking, identity and security — it does not replace Azure).</p>
+<ul>
+<li>A <strong>Foundry resource</strong> provides compute, storage, model delivery and related services.</li>
+<li>A <strong>Foundry project</strong> is an isolated work environment for development. Within a project you
+  work with four asset types:</li>
+<li><strong>Models</strong> — choose and deploy from an extensive multi-provider <strong>model catalog</strong>;</li>
+<li><strong>Agents</strong> — create/manage agents that use models for language and reasoning;</li>
+<li><strong>Tools</strong> — connect agents to capabilities so they can act and access information;</li>
+<li><strong>Knowledge</strong> — manage the data sources agents use to ground their answers.</li>
+</ul>
+<h2>1.6 Endpoints, keys and SDKs</h2>
+<p><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 430" font-family="Segoe UI, Arial, sans-serif" role="img" aria-label="Foundry endpoints: how applications call models and services">
+<rect width="900" height="430" fill="#ffffff"/>
+<defs><marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#5b6b7b"/></marker></defs>
+<text x="450.0" y="34" text-anchor="middle" font-size="22" font-weight="600" fill="#16324f">Foundry endpoints: how applications call models and services</text>
+<rect x="50" y="90" width="230" height="260" rx="10" fill="#e6f4e6" stroke="#107c10" stroke-width="2"/>
+<text x="165" y="125" text-anchor="middle" font-size="15" font-weight="600" fill="#107c10">Client application</text>
+<text x="165" y="152" text-anchor="middle" font-size="12.5" font-weight="normal" fill="#5b6b7b">Uses an SDK (Python, C#, …)</text>
+<text x="165" y="171" text-anchor="middle" font-size="12.5" font-weight="normal" fill="#5b6b7b">that wraps the REST API</text>
+<rect x="90" y="210" width="150" height="110" rx="10" fill="#ffffff" stroke="#107c10" stroke-width="2"/>
+<text x="165" y="250" text-anchor="middle" font-size="15" font-weight="600" fill="#107c10">&lt; SDK &gt;</text>
+<text x="165" y="275" text-anchor="middle" font-size="12" font-weight="normal" fill="#5b6b7b">OpenAI / Azure</text>
+<text x="165" y="294" text-anchor="middle" font-size="12" font-weight="normal" fill="#5b6b7b">client libraries</text>
+<rect x="620" y="90" width="230" height="260" rx="10" fill="#e8f1fb" stroke="#0b5cab" stroke-width="2"/>
+<text x="735" y="125" text-anchor="middle" font-size="15" font-weight="600" fill="#0b5cab">Foundry endpoint</text>
+<text x="735" y="152" text-anchor="middle" font-size="12.5" font-weight="normal" fill="#5b6b7b">HTTPS address of a</text>
+<text x="735" y="171" text-anchor="middle" font-size="12.5" font-weight="normal" fill="#5b6b7b">deployed model or service</text>
+<rect x="660" y="210" width="150" height="110" rx="10" fill="#ffffff" stroke="#0b5cab" stroke-width="2"/>
+<text x="735" y="245" text-anchor="middle" font-size="14" font-weight="600" fill="#0b5cab">Auth</text>
+<text x="735" y="268" text-anchor="middle" font-size="12" font-weight="normal" fill="#5b6b7b">API key, or</text>
+<text x="735" y="287" text-anchor="middle" font-size="12" font-weight="normal" fill="#5b6b7b">Microsoft Entra ID token</text>
+<line x1="285" y1="170" x2="615" y2="170" stroke="#5b6b7b" stroke-width="2.2" marker-end="url(#arr)"/>
+<text x="450.0" y="162" text-anchor="middle" font-size="12" font-weight="normal" fill="#5b6b7b">Request — JSON body + headers</text>
+<line x1="615" y1="285" x2="285" y2="285" stroke="#5b6b7b" stroke-width="2.2" marker-end="url(#arr)"/>
+<text x="450.0" y="277" text-anchor="middle" font-size="12" font-weight="normal" fill="#5b6b7b">Response — JSON results + headers</text>
+<text x="450" y="395" text-anchor="middle" font-size="14" font-weight="normal" fill="#5b6b7b">Endpoint = where to call  ·  Key/token = proof you may call it</text>
+</svg></p>
+<ul>
+<li>An <strong>endpoint</strong> is an <strong>HTTPS address</strong> an application calls to reach a deployed model or
+  service.</li>
+<li>Requests are authenticated with an <strong>API key</strong> or a <strong>Microsoft Entra ID token</strong>.</li>
+<li>Endpoints expose <strong>REST</strong> interfaces: the request carries headers plus a <strong>JSON</strong> body; the
+  response returns headers plus JSON results.</li>
+<li>In real projects you rarely call REST directly — <strong>SDKs</strong> (Python, C#, JavaScript, …) wrap the
+  API for you.</li>
+</ul>
+<blockquote>
+<p><strong>Memory hook:</strong> <em>endpoint = where to call; key = proof you're allowed to call it.</em> The key is
+never a storage location, and the endpoint never "stores secrets."</p>
+</blockquote>
+<h2>1.7 Quick self-check</h2>
+<ol>
+<li>Which boundary does a subscription define — security or billing? <em>(billing)</em></li>
+<li>Name the four asset types in a Foundry project. <em>(models, agents, tools, knowledge)</em></li>
+<li>A model must be tested to operate safely in bad weather — which principle? <em>(reliability &amp; safety)</em></li>
+<li>What two things authenticate a call to a Foundry endpoint? <em>(API key or Entra ID token)</em></li>
+</ol></div><div class="module" id="m02"><h1>Module 2 — Generative AI and Agents</h1>
+<blockquote>
+<p><strong>Public references:</strong> <a href="https://aka.ms/mslearn-intro-gen-ai">https://aka.ms/mslearn-intro-gen-ai</a> · <a href="https://aka.ms/mslearn-get-started-gen-ai-agents">https://aka.ms/mslearn-get-started-gen-ai-agents</a></p>
+</blockquote>
+<hr />
+<h2>2.1 What is generative AI?</h2>
+<p>Generative AI produces <strong>original content in response to a natural-language prompt</strong>. Output can
+be natural language (text or speech), <strong>images and video</strong>, or <strong>code</strong> (Python, C#, SQL, …).</p>
+<p>Typical applications:
+- <strong>smart chatbots</strong> that generate answers dynamically instead of using hard-coded replies,
+- <strong>creative assistants</strong> producing original text, artwork and code,
+- the foundation of <strong>agentic AI</strong> — automation through smart, connected agents.</p>
+<p>Generative AI is powered by <strong>large language models (LLMs)</strong>. <strong>Small language models (SLMs)</strong>
+are compact alternatives for devices and other resource-constrained environments.</p>
+<h2>2.2 How language models work</h2>
+<p><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 440" font-family="Segoe UI, Arial, sans-serif" role="img" aria-label="How language models work: tokens, embeddings, attention">
+<rect width="900" height="440" fill="#ffffff"/>
+<defs><marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#5b6b7b"/></marker></defs>
+<text x="450.0" y="34" text-anchor="middle" font-size="22" font-weight="600" fill="#16324f">How language models work: tokens, embeddings, attention</text>
+<rect x="40.0" y="90" width="184.0" height="130" rx="10" fill="#e8f1fb" stroke="#0b5cab" stroke-width="2"/>
+<circle cx="61.0" cy="113" r="12" fill="#0b5cab"/>
+<text x="61.0" y="118" text-anchor="middle" font-size="13" font-weight="600" fill="#fff">1</text>
+<text x="80.0" y="118" text-anchor="start" font-size="14" font-weight="600" fill="#16324f">Tokenization</text>
+<text x="132.0" y="144" text-anchor="middle" font-size="12" font-weight="normal" fill="#5b6b7b">Text is split into</text>
+<text x="132.0" y="163" text-anchor="middle" font-size="12" font-weight="normal" fill="#5b6b7b">tokens (words /</text>
+<text x="132.0" y="182" text-anchor="middle" font-size="12" font-weight="normal" fill="#5b6b7b">word-parts)</text>
+<line x1="227.0" y1="155.0" x2="249.0" y2="155.0" stroke="#5b6b7b" stroke-width="2.2" marker-end="url(#arr)"/>
+<rect x="252.0" y="90" width="184.0" height="130" rx="10" fill="#e8f1fb" stroke="#0b5cab" stroke-width="2"/>
+<circle cx="273.0" cy="113" r="12" fill="#0b5cab"/>
+<text x="273.0" y="118" text-anchor="middle" font-size="13" font-weight="600" fill="#fff">2</text>
+<text x="292.0" y="118" text-anchor="start" font-size="14" font-weight="600" fill="#16324f">Embeddings</text>
+<text x="344.0" y="144" text-anchor="middle" font-size="12" font-weight="normal" fill="#5b6b7b">Each token becomes a</text>
+<text x="344.0" y="163" text-anchor="middle" font-size="12" font-weight="normal" fill="#5b6b7b">vector that captures</text>
+<text x="344.0" y="182" text-anchor="middle" font-size="12" font-weight="normal" fill="#5b6b7b">semantic meaning</text>
+<line x1="439.0" y1="155.0" x2="461.0" y2="155.0" stroke="#5b6b7b" stroke-width="2.2" marker-end="url(#arr)"/>
+<rect x="464.0" y="90" width="184.0" height="130" rx="10" fill="#e8f1fb" stroke="#0b5cab" stroke-width="2"/>
+<circle cx="485.0" cy="113" r="12" fill="#0b5cab"/>
+<text x="485.0" y="118" text-anchor="middle" font-size="13" font-weight="600" fill="#fff">3</text>
+<text x="504.0" y="118" text-anchor="start" font-size="14" font-weight="600" fill="#16324f">Attention</text>
+<text x="556.0" y="144" text-anchor="middle" font-size="12" font-weight="normal" fill="#5b6b7b">Weights relate every</text>
+<text x="556.0" y="163" text-anchor="middle" font-size="12" font-weight="normal" fill="#5b6b7b">token to the tokens</text>
+<text x="556.0" y="182" text-anchor="middle" font-size="12" font-weight="normal" fill="#5b6b7b">around it in context</text>
+<line x1="651.0" y1="155.0" x2="673.0" y2="155.0" stroke="#5b6b7b" stroke-width="2.2" marker-end="url(#arr)"/>
+<rect x="676.0" y="90" width="184.0" height="130" rx="10" fill="#e8f1fb" stroke="#0b5cab" stroke-width="2"/>
+<circle cx="697.0" cy="113" r="12" fill="#0b5cab"/>
+<text x="697.0" y="118" text-anchor="middle" font-size="13" font-weight="600" fill="#fff">4</text>
+<text x="716.0" y="118" text-anchor="start" font-size="14" font-weight="600" fill="#16324f">Prediction</text>
+<text x="768.0" y="144" text-anchor="middle" font-size="12" font-weight="normal" fill="#5b6b7b">Model computes the</text>
+<text x="768.0" y="163" text-anchor="middle" font-size="12" font-weight="normal" fill="#5b6b7b">most probable</text>
+<text x="768.0" y="182" text-anchor="middle" font-size="12" font-weight="normal" fill="#5b6b7b">next token</text>
+<rect x="60" y="260" width="780" height="150" rx="10" fill="#f7f9fc" stroke="#5b6b7b" stroke-width="2" stroke-dasharray="5 5"/>
+<text x="450" y="292" text-anchor="middle" font-size="14.5" font-weight="600" fill="#16324f">Vector space intuition</text>
+<text x="450" y="318" text-anchor="middle" font-size="13" font-weight="normal" fill="#5b6b7b">Semantically similar tokens point in similar directions:  &quot;dog&quot; ≈ &quot;puppy&quot;,  &quot;cat&quot; ≈ &quot;kitten&quot;</text>
+<text x="450" y="342" text-anchor="middle" font-size="13" font-weight="normal" fill="#5b6b7b">Vector arithmetic captures relationships:  dog + young ≈ puppy</text>
+<text x="450" y="366" text-anchor="middle" font-size="13" font-weight="normal" fill="#5b6b7b">LLMs use the transformer architecture; SLMs are compact versions for constrained devices</text>
+</svg></p>
+<p>Modern LLMs are built on the <strong>transformer</strong> architecture:</p>
+<ol>
+<li><strong>Tokens</strong> — text is split into small units (words or word-parts).</li>
+<li><strong>Embeddings</strong> — each token is encoded as a <strong>vector</strong> that captures semantic meaning.
+   Semantically similar tokens point in similar directions in vector space, and vector
+   arithmetic captures relationships (<em>dog + young ≈ puppy</em>).</li>
+<li><strong>Attention</strong> — for each token, the model weighs its relationship to the tokens around it.
+   This is how context is encoded.</li>
+<li><strong>Prediction</strong> — using those attention-weighted vectors, the model repeatedly predicts the
+   most probable <em>next token</em>, generating fluent output.</li>
+</ol>
+<blockquote>
+<p><strong>Exam anchors:</strong>
+<em>LLM</em> = AI model designed to generate human-like text.
+<em>Embeddings</em> = vector representations of tokens capturing semantic meaning.
+<em>Attention layer</em> = examines relationships between each token and the tokens around it.</p>
+</blockquote>
+<h2>2.3 What are agents?</h2>
+<p><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 450" font-family="Segoe UI, Arial, sans-serif" role="img" aria-label="Anatomy of an AI agent">
+<rect width="900" height="450" fill="#ffffff"/>
+<defs><marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#5b6b7b"/></marker></defs>
+<text x="450.0" y="34" text-anchor="middle" font-size="22" font-weight="600" fill="#16324f">Anatomy of an AI agent</text>
+<rect x="60" y="100" width="240" height="280" rx="10" fill="#e8f1fb" stroke="#0b5cab" stroke-width="2"/>
+<text x="180" y="140" text-anchor="middle" font-size="18" font-weight="600" fill="#0b5cab">Agent</text>
+<text x="180" y="170" text-anchor="middle" font-size="12.5" font-weight="normal" fill="#5b6b7b">Autonomous, action-capable</text>
+<text x="180" y="189" text-anchor="middle" font-size="12.5" font-weight="normal" fill="#5b6b7b">AI assistant that works with</text>
+<text x="180" y="208" text-anchor="middle" font-size="12.5" font-weight="normal" fill="#5b6b7b">users and with other agents</text>
+<rect x="400" y="95" width="260" height="82" rx="10" fill="#f3ecfe" stroke="#7a3ee8" stroke-width="2"/>
+<text x="530" y="127" text-anchor="middle" font-size="14.5" font-weight="600" fill="#7a3ee8">Model</text>
+<text x="530" y="149" text-anchor="middle" font-size="11.5" font-weight="normal" fill="#5b6b7b">Language understanding &amp;</text>
+<text x="530" y="168" text-anchor="middle" font-size="11.5" font-weight="normal" fill="#5b6b7b">reasoning</text>
+<line x1="305" y1="240" x2="395" y2="136" stroke="#5b6b7b" stroke-width="2.2" marker-end="url(#arr)"/>
+<rect x="400" y="195" width="260" height="82" rx="10" fill="#e3f5f5" stroke="#038387" stroke-width="2"/>
+<text x="530" y="227" text-anchor="middle" font-size="14.5" font-weight="600" fill="#038387">Instructions</text>
+<text x="530" y="249" text-anchor="middle" font-size="11.5" font-weight="normal" fill="#5b6b7b">Define behavior, scope &amp; tone</text>
+<line x1="305" y1="240" x2="395" y2="236" stroke="#5b6b7b" stroke-width="2.2" marker-end="url(#arr)"/>
+<rect x="400" y="295" width="260" height="82" rx="10" fill="#fdeee3" stroke="#c74e0c" stroke-width="2"/>
+<text x="530" y="327" text-anchor="middle" font-size="14.5" font-weight="600" fill="#c74e0c">Tools</text>
+<text x="530" y="349" text-anchor="middle" font-size="11.5" font-weight="normal" fill="#5b6b7b">Capabilities the agent can</text>
+<text x="530" y="368" text-anchor="middle" font-size="11.5" font-weight="normal" fill="#5b6b7b">invoke</text>
+<line x1="305" y1="240" x2="395" y2="336" stroke="#5b6b7b" stroke-width="2.2" marker-end="url(#arr)"/>
+<rect x="710" y="150" width="160" height="90" rx="10" fill="#ffffff" stroke="#c74e0c" stroke-width="2"/>
+<text x="790" y="185" text-anchor="middle" font-size="13.5" font-weight="600" fill="#c74e0c">Knowledge</text>
+<text x="790" y="206" text-anchor="middle" font-size="11.5" font-weight="normal" fill="#5b6b7b">Ground answers</text>
+<text x="790" y="225" text-anchor="middle" font-size="11.5" font-weight="normal" fill="#5b6b7b">in data sources</text>
+<rect x="710" y="260" width="160" height="90" rx="10" fill="#ffffff" stroke="#c74e0c" stroke-width="2"/>
+<text x="790" y="295" text-anchor="middle" font-size="13.5" font-weight="600" fill="#c74e0c">Actions</text>
+<text x="790" y="316" text-anchor="middle" font-size="11.5" font-weight="normal" fill="#5b6b7b">Automate tasks via</text>
+<text x="790" y="335" text-anchor="middle" font-size="11.5" font-weight="normal" fill="#5b6b7b">connected services</text>
+<line x1="665" y1="305" x2="705" y2="220" stroke="#5b6b7b" stroke-width="2.2" marker-end="url(#arr)"/>
+<line x1="665" y1="320" x2="705" y2="300" stroke="#5b6b7b" stroke-width="2.2" marker-end="url(#arr)"/>
+</svg></p>
+<p>An <strong>agent</strong> is an autonomous, action-capable AI assistant. It combines:</p>
+<ul>
+<li>a <strong>model</strong> — language understanding and reasoning,</li>
+<li><strong>instructions</strong> — define behavior and scope (the "job description"),</li>
+<li><strong>tools</strong> — used to find <strong>knowledge</strong> (grounding data) and perform <strong>actions</strong> (automation).</li>
+</ul>
+<p>Agents collaborate with <strong>human users</strong> and with <strong>other agents</strong> — multi-agent workflows chain
+specialized agents, each with its own responsibility.</p>
+<h2>2.4 Foundry Models — the model catalog</h2>
+<p>The Foundry <strong>model catalog</strong> is a central hub to <strong>discover, filter, compare and deploy</strong>
+generative AI models from <strong>multiple providers</strong>:</p>
+<ul>
+<li><strong>Models sold directly by Microsoft</strong> — billed through your Azure subscription (Azure OpenAI
+  models and other collections).</li>
+<li><strong>Partner &amp; community models</strong> — purchased from trusted third-party providers.</li>
+</ul>
+<p><strong>Deployment considerations</strong> (know all four):</p>
+<table>
+<thead>
+<tr>
+<th>Setting</th>
+<th>Controls</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Deployment type</strong></td>
+<td>Where data is processed and how you pay</td>
+</tr>
+<tr>
+<td><strong>Version</strong></td>
+<td>Which model version + auto-update policy</td>
+</tr>
+<tr>
+<td><strong>Rate limits</strong></td>
+<td>Maximum <strong>tokens-per-minute (TPM)</strong> throughput</td>
+</tr>
+<tr>
+<td><strong>Guardrails</strong></td>
+<td>Responsible-AI content policies applied to the deployment</td>
+</tr>
+</tbody>
+</table>
+<h2>2.5 Using a generative model</h2>
+<p>Two ways to work with a deployed model:</p>
+<ol>
+<li><strong>Model playground</strong> (Foundry portal) — test prompts, compare models, tune settings, then
+   grab working code. It does <em>not</em> remove the need for deployment or an API — it's for
+   experimentation before you write code.</li>
+<li><strong>OpenAI-compatible APIs / SDKs</strong> — consume the model from application code.</li>
+</ol>
+<p>You shape model behavior with three levers:</p>
+<ul>
+<li><strong>Instructions (system prompt)</strong> — context and guidelines for <em>how</em> to respond.</li>
+<li><strong>Input (user prompt)</strong> — the request itself; explicit, detailed prompts give better output.</li>
+<li><strong>Parameters</strong> — e.g. <strong>temperature</strong> ("creativity"/randomness) and maximum response length.</li>
+</ul>
+<pre><code class="language-python">from openai import OpenAI
+
+client = OpenAI(base_url=&quot;&lt;your-foundry-endpoint&gt;&quot;, api_key=&quot;&lt;your-api-key&gt;&quot;)
+
+response = client.responses.create(
+    model=&quot;&lt;your-model-deployment-name&gt;&quot;,
+    input=&quot;Explain the Turing Test in two sentences.&quot;)
+print(response.output)
+</code></pre>
+<p><em>Reading the pattern:</em> create a <strong>client</strong> bound to the endpoint + key → call
+<code>responses.create()</code> with the <strong>deployment name</strong> and the prompt → read the output.</p>
+<h2>2.6 Creating agents with the Foundry Agent Service</h2>
+<ul>
+<li>Save a model configuration as a <strong>named agent</strong>, or build one directly.</li>
+<li>Add <strong>tools</strong>: <em>knowledge</em> (file search, web, data sources) and <em>actions</em> (connected services,
+  code generation).</li>
+<li>Test in the <strong>agent playground</strong>.</li>
+<li>Connect from code with the <strong>Foundry Project API</strong>:</li>
+</ul>
+<pre><code class="language-python">from azure.identity import DefaultAzureCredential
+from azure.ai.projects import AIProjectClient
+
+project = AIProjectClient(endpoint=&quot;&lt;project-endpoint&gt;&quot;,
+                          credential=DefaultAzureCredential())
+agent = project.agents.get(&quot;expenses-agent&quot;)
+openai_client = project.get_openai_client()
+
+response = openai_client.responses.create(          # ← this line submits the prompt
+    input=[{&quot;role&quot;: &quot;user&quot;, &quot;content&quot;: &quot;How do I submit an expense claim?&quot;}],
+    extra_body={&quot;agent&quot;: {&quot;name&quot;: agent.name, &quot;type&quot;: &quot;agent_reference&quot;}})
+print(response.output_text)
+</code></pre>
+<blockquote>
+<p><strong>Exam anchor:</strong> the line that <em>submits a prompt to the agent</em> is the
+<code>responses.create(...)</code> call — <code>agents.get()</code> only fetches the agent definition and
+<code>get_openai_client()</code> only creates the client object.</p>
+</blockquote>
+<h2>2.7 Quick self-check</h2>
+<ol>
+<li>What architecture underpins modern LLMs? <em>(transformer)</em></li>
+<li>Which deployment setting caps tokens-per-minute? <em>(rate limits)</em></li>
+<li>Which parameter increases response randomness? <em>(temperature)</em></li>
+<li>Agent = model + ___ + ___. <em>(instructions + tools — knowledge &amp; actions)</em></li>
+</ol></div><div class="module" id="m03"><h1>Module 3 — Natural Language Processing &amp; Text Analysis</h1>
+<blockquote>
+<p><strong>Public references:</strong> <a href="https://aka.ms/mslearn-nlp-concepts">https://aka.ms/mslearn-nlp-concepts</a> · <a href="https://aka.ms/mslearn-get-started-ai-text">https://aka.ms/mslearn-get-started-ai-text</a></p>
+</blockquote>
+<hr />
+<h2>3.1 What is NLP?</h2>
+<p>Natural language processing (NLP) is about <strong>inferring meaning from text</strong>. Core text-analysis
+tasks:</p>
+<table>
+<thead>
+<tr>
+<th>Task</th>
+<th>Question it answers</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Key-term / key-phrase extraction</strong></td>
+<td>What are the main topics?</td>
+</tr>
+<tr>
+<td><strong>Named entity recognition (NER)</strong></td>
+<td>Which people, places, organizations, dates appear?</td>
+</tr>
+<tr>
+<td><strong>Text classification</strong> (incl. <strong>sentiment analysis</strong>)</td>
+<td>What category / tone is this?</td>
+</tr>
+<tr>
+<td><strong>Summarization</strong></td>
+<td>What's the short version?</td>
+</tr>
+<tr>
+<td><strong>Language detection</strong></td>
+<td>Which language is this written in?</td>
+</tr>
+<tr>
+<td><strong>PII detection &amp; redaction</strong></td>
+<td>Which values are personally identifiable?</td>
+</tr>
+</tbody>
+</table>
+<p>Common use cases: indexing documents for search, PII redaction, intent prediction for chatbots,
+spam filtering, social-media analysis, article categorization.</p>
+<h2>3.2 Text pre-processing</h2>
+<p><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 330" font-family="Segoe UI, Arial, sans-serif" role="img" aria-label="Text pre-processing pipeline">
+<rect width="900" height="330" fill="#ffffff"/>
+<defs><marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#5b6b7b"/></marker></defs>
+<text x="450.0" y="34" text-anchor="middle" font-size="22" font-weight="600" fill="#16324f">Text pre-processing pipeline</text>
+<rect x="40.0" y="80" width="141.6" height="115" rx="10" fill="#e8f1fb" stroke="#0b5cab" stroke-width="2"/>
+<circle cx="61.0" cy="103" r="12" fill="#0b5cab"/>
+<text x="61.0" y="108" text-anchor="middle" font-size="13" font-weight="600" fill="#fff">1</text>
+<text x="80.0" y="108" text-anchor="start" font-size="14" font-weight="600" fill="#16324f">Tokenization</text>
+<text x="110.8" y="134" text-anchor="middle" font-size="12" font-weight="normal" fill="#5b6b7b">Split text</text>
+<text x="110.8" y="153" text-anchor="middle" font-size="12" font-weight="normal" fill="#5b6b7b">into words</text>
+<line x1="184.6" y1="137.5" x2="206.6" y2="137.5" stroke="#5b6b7b" stroke-width="2.2" marker-end="url(#arr)"/>
+<rect x="209.6" y="80" width="141.6" height="115" rx="10" fill="#e8f1fb" stroke="#0b5cab" stroke-width="2"/>
+<circle cx="230.6" cy="103" r="12" fill="#0b5cab"/>
+<text x="230.6" y="108" text-anchor="middle" font-size="13" font-weight="600" fill="#fff">2</text>
+<text x="249.6" y="108" text-anchor="start" font-size="14" font-weight="600" fill="#16324f">Normalization</text>
+<text x="280.4" y="134" text-anchor="middle" font-size="12" font-weight="normal" fill="#5b6b7b">Lower-case;</text>
+<text x="280.4" y="153" text-anchor="middle" font-size="12" font-weight="normal" fill="#5b6b7b">strip punctuation</text>
+<line x1="354.2" y1="137.5" x2="376.2" y2="137.5" stroke="#5b6b7b" stroke-width="2.2" marker-end="url(#arr)"/>
+<rect x="379.2" y="80" width="141.6" height="115" rx="10" fill="#e8f1fb" stroke="#0b5cab" stroke-width="2"/>
+<circle cx="400.2" cy="103" r="12" fill="#0b5cab"/>
+<text x="400.2" y="108" text-anchor="middle" font-size="13" font-weight="600" fill="#fff">3</text>
+<text x="419.2" y="108" text-anchor="start" font-size="14" font-weight="600" fill="#16324f">Stop-word removal</text>
+<text x="450.0" y="134" text-anchor="middle" font-size="12" font-weight="normal" fill="#5b6b7b">Drop noise words</text>
+<text x="450.0" y="153" text-anchor="middle" font-size="12" font-weight="normal" fill="#5b6b7b">(&quot;the&quot;, &quot;a&quot;, &quot;and&quot;)</text>
+<line x1="523.8" y1="137.5" x2="545.8" y2="137.5" stroke="#5b6b7b" stroke-width="2.2" marker-end="url(#arr)"/>
+<rect x="548.8" y="80" width="141.6" height="115" rx="10" fill="#e8f1fb" stroke="#0b5cab" stroke-width="2"/>
+<circle cx="569.8" cy="103" r="12" fill="#0b5cab"/>
+<text x="569.8" y="108" text-anchor="middle" font-size="13" font-weight="600" fill="#fff">4</text>
+<text x="588.8" y="108" text-anchor="start" font-size="14" font-weight="600" fill="#16324f">Stemming /</text>
+<text x="619.5999999999999" y="134" text-anchor="middle" font-size="12" font-weight="normal" fill="#5b6b7b">lemmatization —</text>
+<text x="619.5999999999999" y="153" text-anchor="middle" font-size="12" font-weight="normal" fill="#5b6b7b">consolidate roots</text>
+<line x1="693.4" y1="137.5" x2="715.4" y2="137.5" stroke="#5b6b7b" stroke-width="2.2" marker-end="url(#arr)"/>
+<rect x="718.4" y="80" width="141.6" height="115" rx="10" fill="#e8f1fb" stroke="#0b5cab" stroke-width="2"/>
+<circle cx="739.4" cy="103" r="12" fill="#0b5cab"/>
+<text x="739.4" y="108" text-anchor="middle" font-size="13" font-weight="600" fill="#fff">5</text>
+<text x="758.4" y="108" text-anchor="start" font-size="14" font-weight="600" fill="#16324f">POS tagging</text>
+<text x="789.1999999999999" y="134" text-anchor="middle" font-size="12" font-weight="normal" fill="#5b6b7b">Label verbs,</text>
+<text x="789.1999999999999" y="153" text-anchor="middle" font-size="12" font-weight="normal" fill="#5b6b7b">nouns, adjectives</text>
+<text x="450" y="250" text-anchor="middle" font-size="14" font-weight="normal" fill="#5b6b7b">Example: &quot;We choose to go to the Moon!&quot;  →  choose (V) · go (V) · moon (N)</text>
+<text x="450" y="285" text-anchor="middle" font-size="13" font-weight="normal" fill="#5b6b7b">Prepared tokens feed statistical analysis or are vectorized for semantic models</text>
+</svg></p>
+<p>Before analysis, raw text is prepared:</p>
+<ol>
+<li><strong>Tokenization</strong> — split text into words/units for analysis.</li>
+<li><strong>Normalization</strong> — remove capitalization and punctuation.</li>
+<li><strong>Stop-word removal</strong> — drop common "noise" words (<em>the, a, it, and</em>).</li>
+<li><strong>Stemming / lemmatization</strong> — consolidate word roots (<em>power, powered, powerful</em>).</li>
+<li><strong>Parts-of-speech (POS) tagging</strong> — label each word as verb, noun, adjective, …</li>
+</ol>
+<h2>3.3 Statistical vs semantic analysis</h2>
+<p><strong>Statistical techniques</strong> work on token counts:</p>
+<ul>
+<li><strong>Term Frequency (TF)</strong> — most common tokens ≈ key topics of a document.</li>
+<li><strong>TF-IDF</strong> — a word's frequency in <em>this</em> document <strong>relative to</strong> its frequency across <em>all</em>
+  documents → importance of a word to a specific document within a collection.</li>
+<li><strong>Bag-of-Words (BoW)</strong> — frequencies of words from a set correlate with a classification
+  (e.g., <em>happy, great, fantastic</em> → positive).</li>
+<li><strong>TextRank</strong> — sentence-relevance scoring (based on the PageRank idea), commonly used for
+  <strong>extractive summarization</strong> (pick the <em>n</em> most relevant sentences).</li>
+</ul>
+<p><strong>Semantic models</strong> vectorize tokens as <strong>embeddings</strong> trained to capture meaning — this is the
+basis of modern LLMs. Embeddings capture semantic relationships in multiple dimensions; they are
+<em>not</em> translations or stop-word lists.</p>
+<h2>3.4 Text analysis in Microsoft Foundry — two routes</h2>
+<p><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 460" font-family="Segoe UI, Arial, sans-serif" role="img" aria-label="Text analysis in Foundry: choosing the right method">
+<rect width="900" height="460" fill="#ffffff"/>
+<defs><marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#5b6b7b"/></marker></defs>
+<text x="450.0" y="34" text-anchor="middle" font-size="22" font-weight="600" fill="#16324f">Text analysis in Foundry: choosing the right method</text>
+<rect x="60" y="70" width="370" height="320" rx="10" fill="#e8f1fb" stroke="#0b5cab" stroke-width="2"/>
+<text x="245" y="105" text-anchor="middle" font-size="15.5" font-weight="600" fill="#0b5cab">General-purpose AI models</text>
+<text x="245" y="128" text-anchor="middle" font-size="12.5" font-weight="normal" fill="#5b6b7b">(prompt an LLM, e.g. gpt-4.1-mini)</text>
+<text x="245" y="158" text-anchor="middle" font-size="13" font-weight="normal" fill="#5b6b7b">✓ Flexible, conversational analysis</text>
+<text x="245" y="182" text-anchor="middle" font-size="13" font-weight="normal" fill="#5b6b7b">✓ Multiple tasks in one call</text>
+<text x="245" y="206" text-anchor="middle" font-size="13" font-weight="normal" fill="#5b6b7b">✓ Natural-language responses</text>
+<text x="245" y="230" text-anchor="middle" font-size="13" font-weight="normal" fill="#5b6b7b">✓ Exploratory workflows</text>
+<text x="245" y="254" text-anchor="middle" font-size="13" font-weight="normal" fill="#5b6b7b"></text>
+<text x="245" y="278" text-anchor="middle" font-size="13" font-weight="normal" fill="#5b6b7b">✗ Probabilistic — results can vary</text>
+<text x="245" y="302" text-anchor="middle" font-size="13" font-weight="normal" fill="#5b6b7b">   between identical calls</text>
+<rect x="470" y="70" width="370" height="320" rx="10" fill="#e6f4e6" stroke="#107c10" stroke-width="2"/>
+<text x="655" y="105" text-anchor="middle" font-size="15.5" font-weight="600" fill="#107c10">Azure Language (Foundry Tools)</text>
+<text x="655" y="128" text-anchor="middle" font-size="12.5" font-weight="normal" fill="#5b6b7b">(dedicated prebuilt service + SDK)</text>
+<text x="655" y="158" text-anchor="middle" font-size="13" font-weight="normal" fill="#5b6b7b">✓ Deterministic, structured output</text>
+<text x="655" y="182" text-anchor="middle" font-size="13" font-weight="normal" fill="#5b6b7b">✓ Confidence scores per result</text>
+<text x="655" y="206" text-anchor="middle" font-size="13" font-weight="normal" fill="#5b6b7b">✓ Production pipelines at scale</text>
+<text x="655" y="230" text-anchor="middle" font-size="13" font-weight="normal" fill="#5b6b7b">✓ PII detection for regulated data</text>
+<text x="655" y="254" text-anchor="middle" font-size="13" font-weight="normal" fill="#5b6b7b">✓ Language detection, NER, health</text>
+<text x="655" y="278" text-anchor="middle" font-size="13" font-weight="normal" fill="#5b6b7b"></text>
+<text x="655" y="302" text-anchor="middle" font-size="13" font-weight="normal" fill="#5b6b7b">Strength: reproducible results</text>
+<text x="450" y="425" text-anchor="middle" font-size="13.5" font-weight="normal" fill="#5b6b7b">Same input → same output needed?  Pick Azure Language.  Flexibility needed?  Prompt a model.</text>
+</svg></p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th><strong>General-purpose model</strong> (prompt an LLM)</th>
+<th><strong>Azure Language in Foundry Tools</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Style</td>
+<td>Flexible, conversational</td>
+<td>Dedicated, prebuilt service</td>
+</tr>
+<tr>
+<td>Output</td>
+<td>Natural language; combine many tasks in one call</td>
+<td><strong>Deterministic, structured</strong>, with <strong>confidence scores</strong></td>
+</tr>
+<tr>
+<td>Best for</td>
+<td>Exploration, ad-hoc analysis</td>
+<td>Production pipelines, regulated data (PII), reproducible results at scale</td>
+</tr>
+<tr>
+<td>Trade-off</td>
+<td>Results may vary between calls (probabilistic generation)</td>
+<td>Fixed task set</td>
+</tr>
+</tbody>
+</table>
+<p>Azure Language capabilities include <strong>PII extraction, language detection, named entity
+recognition, and Text Analytics for Health</strong>.</p>
+<blockquote>
+<p><strong>Rule of thumb:</strong> <em>"same input must return the same structured result"</em> → <strong>Azure Language
+SDK</strong>. <em>"flexible natural-language analysis"</em> → <strong>general-purpose model via OpenAI API</strong>.</p>
+</blockquote>
+<h2>3.5 Client applications</h2>
+<p><strong>Route 1 — OpenAI library</strong> (general-purpose model): create an <code>OpenAI</code> client with endpoint +
+key, call <code>client.responses.create(model=deployment, input=prompt)</code>.</p>
+<p><strong>Route 2 — Azure Language SDK</strong> (<code>azure-ai-textanalytics</code>):</p>
+<pre><code class="language-python">from azure.ai.textanalytics import TextAnalyticsClient
+from azure.core.credentials import AzureKeyCredential
+
+client = TextAnalyticsClient(endpoint=&quot;&lt;foundry-endpoint&gt;&quot;,
+                             credential=AzureKeyCredential(&quot;&lt;key&gt;&quot;))
+
+docs = [&quot;Alex and I attended a Microsoft AI conference in Las Vegas on September 21st.&quot;]
+result = client.recognize_entities(documents=docs)[0]
+for e in result.entities:
+    print(e.text, e.category, e.confidence_score)
+</code></pre>
+<ul>
+<li>The <strong>client object</strong> is what lets your code communicate with the service (endpoint + key or
+  Entra ID credentials).</li>
+<li>You submit a <strong>collection of documents</strong> for analysis.</li>
+<li>Handy methods: <code>detect_language()</code> → language name, ISO 639-1 code, confidence;
+  <code>recognize_pii_entities()</code> → <strong>redacted text</strong> + entity list + confidence per entity;
+  <code>extract_key_phrases()</code>, <code>analyze_sentiment()</code>, <code>recognize_entities()</code>.</li>
+</ul>
+<h2>3.6 Azure Language inside an agent (MCP)</h2>
+<p>Agents can call Azure Language through the <strong>Model Context Protocol (MCP)</strong>: the Azure Language
+<strong>MCP server exposes Language capabilities to agents as tools</strong>. You connect the tool to your
+agent (specifying the Foundry resource + credentials) and approve access <strong>one time, always for
+this tool, or always for all tools</strong>. The MCP server does not replace models — it gives agents a
+structured tool to call.</p>
+<h2>3.7 Quick self-check</h2>
+<ol>
+<li>Which technique weighs a term's document frequency against the whole corpus? <em>(TF-IDF)</em></li>
+<li>Which route gives deterministic output with confidence scores? <em>(Azure Language)</em></li>
+<li>What does <code>recognize_pii_entities()</code> return besides entities? <em>(redacted text + confidence scores)</em></li>
+<li>How do agents access Azure Language as a tool? <em>(via the MCP server)</em></li>
+</ol></div><div class="module" id="m04"><h1>Module 4 — AI Speech</h1>
+<blockquote>
+<p><strong>Public references:</strong> <a href="https://aka.ms/mslearn-ai-speech-concepts">https://aka.ms/mslearn-ai-speech-concepts</a> · <a href="https://aka.ms/mslearn-get-started-ai-speech">https://aka.ms/mslearn-get-started-ai-speech</a></p>
+</blockquote>
+<hr />
+<h2>4.1 Speech-enabled solutions</h2>
+<table>
+<thead>
+<tr>
+<th></th>
+<th><strong>Speech recognition</strong></th>
+<th><strong>Speech synthesis</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Also called</td>
+<td><strong>Speech-to-text (STT)</strong></td>
+<td><strong>Text-to-speech (TTS)</strong></td>
+</tr>
+<tr>
+<td>Input</td>
+<td>Audio file, stream, or microphone</td>
+<td>Text (file or user/app input)</td>
+</tr>
+<tr>
+<td>Output</td>
+<td>Text transcription</td>
+<td>Audio waveform of spoken speech</td>
+</tr>
+<tr>
+<td>Use cases</td>
+<td>Customer support, voice assistants, <strong>automatic subtitles</strong> (accessibility), meeting transcription, clinical note-taking</td>
+<td>Chatbots/conversational AI, <strong>screen readers</strong> (accessibility), notifications &amp; alerts, e-learning, game character voices</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>Both directions appear in accessibility questions — captions = STT, screen reader = TTS.</p>
+</blockquote>
+<h2>4.2 How speech recognition works</h2>
+<p><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 330" font-family="Segoe UI, Arial, sans-serif" role="img" aria-label="Speech recognition (speech-to-text) pipeline">
+<rect width="900" height="330" fill="#ffffff"/>
+<defs><marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#5b6b7b"/></marker></defs>
+<text x="450.0" y="34" text-anchor="middle" font-size="22" font-weight="600" fill="#16324f">Speech recognition (speech-to-text) pipeline</text>
+<rect x="40.0" y="80" width="141.6" height="120" rx="10" fill="#e8f1fb" stroke="#0b5cab" stroke-width="2"/>
+<circle cx="61.0" cy="103" r="12" fill="#0b5cab"/>
+<text x="61.0" y="108" text-anchor="middle" font-size="13" font-weight="600" fill="#fff">1</text>
+<text x="80.0" y="108" text-anchor="start" font-size="14" font-weight="600" fill="#16324f">Audio capture</text>
+<text x="110.8" y="134" text-anchor="middle" font-size="12" font-weight="normal" fill="#5b6b7b">Analog signal →</text>
+<text x="110.8" y="153" text-anchor="middle" font-size="12" font-weight="normal" fill="#5b6b7b">digital waveform</text>
+<line x1="184.6" y1="140.0" x2="206.6" y2="140.0" stroke="#5b6b7b" stroke-width="2.2" marker-end="url(#arr)"/>
+<rect x="209.6" y="80" width="141.6" height="120" rx="10" fill="#e8f1fb" stroke="#0b5cab" stroke-width="2"/>
+<circle cx="230.6" cy="103" r="12" fill="#0b5cab"/>
+<text x="230.6" y="108" text-anchor="middle" font-size="13" font-weight="600" fill="#fff">2</text>
+<text x="249.6" y="108" text-anchor="start" font-size="14" font-weight="600" fill="#16324f">Pre-processing</text>
+<text x="280.4" y="134" text-anchor="middle" font-size="12" font-weight="normal" fill="#5b6b7b">Extract feature</text>
+<text x="280.4" y="153" text-anchor="middle" font-size="12" font-weight="normal" fill="#5b6b7b">vectors (frequency</text>
+<text x="280.4" y="172" text-anchor="middle" font-size="12" font-weight="normal" fill="#5b6b7b">intensities)</text>
+<line x1="354.2" y1="140.0" x2="376.2" y2="140.0" stroke="#5b6b7b" stroke-width="2.2" marker-end="url(#arr)"/>
+<rect x="379.2" y="80" width="141.6" height="120" rx="10" fill="#e8f1fb" stroke="#0b5cab" stroke-width="2"/>
+<circle cx="400.2" cy="103" r="12" fill="#0b5cab"/>
+<text x="400.2" y="108" text-anchor="middle" font-size="13" font-weight="600" fill="#fff">3</text>
+<text x="419.2" y="108" text-anchor="start" font-size="14" font-weight="600" fill="#16324f">Acoustic model</text>
+<text x="450.0" y="134" text-anchor="middle" font-size="12" font-weight="normal" fill="#5b6b7b">Map features to</text>
+<text x="450.0" y="153" text-anchor="middle" font-size="12" font-weight="normal" fill="#5b6b7b">phonemes (smallest</text>
+<text x="450.0" y="172" text-anchor="middle" font-size="12" font-weight="normal" fill="#5b6b7b">units of sound)</text>
+<line x1="523.8" y1="140.0" x2="545.8" y2="140.0" stroke="#5b6b7b" stroke-width="2.2" marker-end="url(#arr)"/>
+<rect x="548.8" y="80" width="141.6" height="120" rx="10" fill="#e8f1fb" stroke="#0b5cab" stroke-width="2"/>
+<circle cx="569.8" cy="103" r="12" fill="#0b5cab"/>
+<text x="569.8" y="108" text-anchor="middle" font-size="13" font-weight="600" fill="#fff">4</text>
+<text x="588.8" y="108" text-anchor="start" font-size="14" font-weight="600" fill="#16324f">Language model</text>
+<text x="619.5999999999999" y="134" text-anchor="middle" font-size="12" font-weight="normal" fill="#5b6b7b">Most probable word</text>
+<text x="619.5999999999999" y="153" text-anchor="middle" font-size="12" font-weight="normal" fill="#5b6b7b">sequence: &quot;nice to</text>
+<text x="619.5999999999999" y="172" text-anchor="middle" font-size="12" font-weight="normal" fill="#5b6b7b">be here&quot; not &quot;nights…&quot;</text>
+<line x1="693.4" y1="140.0" x2="715.4" y2="140.0" stroke="#5b6b7b" stroke-width="2.2" marker-end="url(#arr)"/>
+<rect x="718.4" y="80" width="141.6" height="120" rx="10" fill="#e8f1fb" stroke="#0b5cab" stroke-width="2"/>
+<circle cx="739.4" cy="103" r="12" fill="#0b5cab"/>
+<text x="739.4" y="108" text-anchor="middle" font-size="13" font-weight="600" fill="#fff">5</text>
+<text x="758.4" y="108" text-anchor="start" font-size="14" font-weight="600" fill="#16324f">Post-processing</text>
+<text x="789.1999999999999" y="134" text-anchor="middle" font-size="12" font-weight="normal" fill="#5b6b7b">Normalize &amp;</text>
+<text x="789.1999999999999" y="153" text-anchor="middle" font-size="12" font-weight="normal" fill="#5b6b7b">format the text</text>
+<text x="450" y="255" text-anchor="middle" font-size="13.5" font-weight="normal" fill="#5b6b7b">Output: transcribed text — used for captions, transcription, voice assistants</text>
+</svg></p>
+<ol>
+<li><strong>Audio capture</strong> — analog sound becomes a digital waveform.</li>
+<li><strong>Pre-processing</strong> — <strong>feature vectors</strong> are extracted from the waveform (signal intensity at
+   specific frequencies). <em>Noise is removed, never added.</em></li>
+<li><strong>Acoustic modeling</strong> — features are mapped to <strong>phonemes</strong>, the <strong>smallest units of sound</strong>
+   in speech.</li>
+<li><strong>Language modeling</strong> — predicts the most probable <strong>word sequence</strong> from the phonemes
+   (choosing <em>"nice to be here"</em> over <em>"nights two bee hear"</em>).</li>
+<li><strong>Post-processing</strong> — normalize and format the final text.</li>
+</ol>
+<h2>4.3 How speech synthesis works</h2>
+<p><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 330" font-family="Segoe UI, Arial, sans-serif" role="img" aria-label="Speech synthesis (text-to-speech) pipeline">
+<rect width="900" height="330" fill="#ffffff"/>
+<defs><marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#5b6b7b"/></marker></defs>
+<text x="450.0" y="34" text-anchor="middle" font-size="22" font-weight="600" fill="#16324f">Speech synthesis (text-to-speech) pipeline</text>
+<rect x="40.0" y="80" width="141.6" height="120" rx="10" fill="#f3ecfe" stroke="#7a3ee8" stroke-width="2"/>
+<circle cx="61.0" cy="103" r="12" fill="#7a3ee8"/>
+<text x="61.0" y="108" text-anchor="middle" font-size="13" font-weight="600" fill="#fff">1</text>
+<text x="80.0" y="108" text-anchor="start" font-size="14" font-weight="600" fill="#16324f">Source text</text>
+<text x="110.8" y="134" text-anchor="middle" font-size="12" font-weight="normal" fill="#5b6b7b">Document content</text>
+<text x="110.8" y="153" text-anchor="middle" font-size="12" font-weight="normal" fill="#5b6b7b">or app/model</text>
+<text x="110.8" y="172" text-anchor="middle" font-size="12" font-weight="normal" fill="#5b6b7b">output</text>
+<line x1="184.6" y1="140.0" x2="206.6" y2="140.0" stroke="#5b6b7b" stroke-width="2.2" marker-end="url(#arr)"/>
+<rect x="209.6" y="80" width="141.6" height="120" rx="10" fill="#f3ecfe" stroke="#7a3ee8" stroke-width="2"/>
+<circle cx="230.6" cy="103" r="12" fill="#7a3ee8"/>
+<text x="230.6" y="108" text-anchor="middle" font-size="13" font-weight="600" fill="#fff">2</text>
+<text x="249.6" y="108" text-anchor="start" font-size="14" font-weight="600" fill="#16324f">Normalization</text>
+<text x="280.4" y="134" text-anchor="middle" font-size="12" font-weight="normal" fill="#5b6b7b">Expand Dr. → doctor,</text>
+<text x="280.4" y="153" text-anchor="middle" font-size="12" font-weight="normal" fill="#5b6b7b">3:00pm → three</text>
+<text x="280.4" y="172" text-anchor="middle" font-size="12" font-weight="normal" fill="#5b6b7b">o&#x27;clock P M</text>
+<line x1="354.2" y1="140.0" x2="376.2" y2="140.0" stroke="#5b6b7b" stroke-width="2.2" marker-end="url(#arr)"/>
+<rect x="379.2" y="80" width="141.6" height="120" rx="10" fill="#f3ecfe" stroke="#7a3ee8" stroke-width="2"/>
+<circle cx="400.2" cy="103" r="12" fill="#7a3ee8"/>
+<text x="400.2" y="108" text-anchor="middle" font-size="13" font-weight="600" fill="#fff">3</text>
+<text x="419.2" y="108" text-anchor="start" font-size="14" font-weight="600" fill="#16324f">Linguistic model</text>
+<text x="450.0" y="134" text-anchor="middle" font-size="12" font-weight="normal" fill="#5b6b7b">Map normalized</text>
+<text x="450.0" y="153" text-anchor="middle" font-size="12" font-weight="normal" fill="#5b6b7b">text to phonemes</text>
+<line x1="523.8" y1="140.0" x2="545.8" y2="140.0" stroke="#5b6b7b" stroke-width="2.2" marker-end="url(#arr)"/>
+<rect x="548.8" y="80" width="141.6" height="120" rx="10" fill="#f3ecfe" stroke="#7a3ee8" stroke-width="2"/>
+<circle cx="569.8" cy="103" r="12" fill="#7a3ee8"/>
+<text x="569.8" y="108" text-anchor="middle" font-size="13" font-weight="600" fill="#fff">4</text>
+<text x="588.8" y="108" text-anchor="start" font-size="14" font-weight="600" fill="#16324f">Prosody</text>
+<text x="619.5999999999999" y="134" text-anchor="middle" font-size="12" font-weight="normal" fill="#5b6b7b">Pitch, rhythm &amp;</text>
+<text x="619.5999999999999" y="153" text-anchor="middle" font-size="12" font-weight="normal" fill="#5b6b7b">timbre for natural</text>
+<text x="619.5999999999999" y="172" text-anchor="middle" font-size="12" font-weight="normal" fill="#5b6b7b">pronunciation</text>
+<line x1="693.4" y1="140.0" x2="715.4" y2="140.0" stroke="#5b6b7b" stroke-width="2.2" marker-end="url(#arr)"/>
+<rect x="718.4" y="80" width="141.6" height="120" rx="10" fill="#f3ecfe" stroke="#7a3ee8" stroke-width="2"/>
+<circle cx="739.4" cy="103" r="12" fill="#7a3ee8"/>
+<text x="739.4" y="108" text-anchor="middle" font-size="13" font-weight="600" fill="#fff">5</text>
+<text x="758.4" y="108" text-anchor="start" font-size="14" font-weight="600" fill="#16324f">Waveform</text>
+<text x="789.1999999999999" y="134" text-anchor="middle" font-size="12" font-weight="normal" fill="#5b6b7b">Encode digital</text>
+<text x="789.1999999999999" y="153" text-anchor="middle" font-size="12" font-weight="normal" fill="#5b6b7b">audio output</text>
+<text x="450" y="255" text-anchor="middle" font-size="13.5" font-weight="normal" fill="#5b6b7b">Output: spoken audio — used by assistants, screen readers, alerts, e-learning</text>
+</svg></p>
+<ol>
+<li><strong>Source text</strong> — document content or generated app/model output.</li>
+<li><strong>Normalization</strong> — expand abbreviations and numbers (<em>Dr. → doctor</em>, <em>3:00pm → three o'clock P M</em>).</li>
+<li><strong>Linguistic modeling</strong> — map normalized text to phonemes.</li>
+<li><strong>Prosody generation</strong> — adjust pitch, rhythm and timbre so pronunciation and cadence sound
+   <strong>natural</strong> (prosody is not about volume or translation).</li>
+<li><strong>Waveform encoding</strong> — produce the digital audio output.</li>
+</ol>
+<h2>4.4 Speech in Microsoft Foundry</h2>
+<p><strong>Azure Speech in Foundry Tools</strong> provides STT and TTS. Three ways to use it:</p>
+<ol>
+<li><strong>Foundry portal playground</strong> — experiment with real-time transcription (language
+   identification, speaker diarization, output formats) and voice selection/tuning.</li>
+<li><strong>Azure Speech SDK</strong> — add speech directly to application code.</li>
+<li><strong>MCP server</strong> — expose speech capabilities to <strong>agents</strong> as tools.</li>
+</ol>
+<p><strong>Speech-to-text (Python SDK) — the pattern:</strong></p>
+<pre><code class="language-python">import azure.cognitiveservices.speech as speechsdk
+
+speech_config = speechsdk.SpeechConfig(subscription=&quot;&lt;key&gt;&quot;, endpoint=&quot;&lt;foundry-endpoint&gt;&quot;)
+audio_config  = speechsdk.audio.AudioConfig(filename=&quot;voice-message.wav&quot;)
+
+recognizer = speechsdk.SpeechRecognizer(speech_config=speech_config,
+                                        audio_config=audio_config)
+result = recognizer.recognize_once_async().get()
+print(result.text)
+</code></pre>
+<p><strong>Text-to-speech — the pattern:</strong> configure <code>SpeechConfig</code> the same way, set
+<code>speech_synthesis_voice_name</code>, create a <code>SpeechSynthesizer</code>, call
+<code>speak_text_async("...").get()</code>. <strong>No <code>AudioConfig</code> is needed for default speaker output</strong> (use
+one to write to a file instead). The SDK handles <strong>authentication, network communication and
+audio generation</strong> for you.</p>
+<h2>4.5 Voice Live — speech-capable agents</h2>
+<p><strong>Azure Speech in Foundry Tools: Voice Live</strong> enables <strong>real-time spoken conversation</strong> with a
+generative AI model that has instructions and tools:</p>
+<ul>
+<li>continuous conversation flow with <strong>interruption handling</strong> and <strong>background-noise reduction</strong>;</li>
+<li>experiment in the Foundry portal playground;</li>
+<li>build client apps with the <strong>Voice Live SDK (<code>azure-ai-voicelive</code>)</strong> — it opens a real-time
+  connection, streams audio, and handles spoken responses and interruptions.</li>
+</ul>
+<h2>4.6 Quick self-check</h2>
+<ol>
+<li>Phonemes are mapped by which model — acoustic or language? <em>(acoustic)</em></li>
+<li>What does prosody control? <em>(natural pronunciation &amp; cadence — pitch, rhythm, timbre)</em></li>
+<li>In TTS code, when can you omit <code>AudioConfig</code>? <em>(default speaker output)</em></li>
+<li>Which service powers real-time voice agents? <em>(Voice Live)</em></li>
+</ol></div><div class="module" id="m05"><h1>Module 5 — Computer Vision</h1>
+<blockquote>
+<p><strong>Public references:</strong> <a href="https://aka.ms/mslearn-ai-vision-concepts">https://aka.ms/mslearn-ai-vision-concepts</a> · <a href="https://aka.ms/mslearn-get-started-ai-vision">https://aka.ms/mslearn-get-started-ai-vision</a></p>
+</blockquote>
+<hr />
+<h2>5.1 Vision tasks and techniques</h2>
+<p><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 440" font-family="Segoe UI, Arial, sans-serif" role="img" aria-label="Computer vision tasks">
+<rect width="900" height="440" fill="#ffffff"/>
+<defs><marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#5b6b7b"/></marker></defs>
+<text x="450.0" y="34" text-anchor="middle" font-size="22" font-weight="600" fill="#16324f">Computer vision tasks</text>
+<rect x="70" y="70" width="360" height="150" rx="10" fill="#e6f4e6" stroke="#107c10" stroke-width="2"/>
+<text x="250" y="110" text-anchor="middle" font-size="15.5" font-weight="600" fill="#107c10">Image classification</text>
+<text x="250" y="140" text-anchor="middle" font-size="13" font-weight="normal" fill="#5b6b7b">Assign a single label to the</text>
+<text x="250" y="162" text-anchor="middle" font-size="13" font-weight="normal" fill="#5b6b7b">whole image: &quot;apple&quot;</text>
+<rect x="460" y="70" width="360" height="150" rx="10" fill="#e6f4e6" stroke="#107c10" stroke-width="2"/>
+<text x="640" y="110" text-anchor="middle" font-size="15.5" font-weight="600" fill="#107c10">Object detection</text>
+<text x="640" y="140" text-anchor="middle" font-size="13" font-weight="normal" fill="#5b6b7b">Locate each object with a</text>
+<text x="640" y="162" text-anchor="middle" font-size="13" font-weight="normal" fill="#5b6b7b">bounding box + class label</text>
+<rect x="70" y="240" width="360" height="150" rx="10" fill="#e6f4e6" stroke="#107c10" stroke-width="2"/>
+<text x="250" y="280" text-anchor="middle" font-size="15.5" font-weight="600" fill="#107c10">Semantic segmentation</text>
+<text x="250" y="310" text-anchor="middle" font-size="13" font-weight="normal" fill="#5b6b7b">Classify every pixel —</text>
+<text x="250" y="332" text-anchor="middle" font-size="13" font-weight="normal" fill="#5b6b7b">exact object outlines</text>
+<rect x="460" y="240" width="360" height="150" rx="10" fill="#e6f4e6" stroke="#107c10" stroke-width="2"/>
+<text x="640" y="280" text-anchor="middle" font-size="15.5" font-weight="600" fill="#107c10">Contextual image analysis</text>
+<text x="640" y="310" text-anchor="middle" font-size="13" font-weight="normal" fill="#5b6b7b">Describe the scene:</text>
+<text x="640" y="332" text-anchor="middle" font-size="13" font-weight="normal" fill="#5b6b7b">&quot;a person eating an apple&quot;</text>
+<text x="450" y="420" text-anchor="middle" font-size="13.5" font-weight="normal" fill="#5b6b7b">All manipulate and analyze pixel values, increasingly via multimodal models</text>
+</svg></p>
+<p>Computer vision is based on <strong>manipulating and analyzing pixel values</strong> (not file names or
+metadata). The core tasks, in increasing granularity:</p>
+<table>
+<thead>
+<tr>
+<th>Task</th>
+<th>Output</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Image classification</strong></td>
+<td>One label for the whole image (<em>"apple"</em>)</td>
+</tr>
+<tr>
+<td><strong>Object detection</strong></td>
+<td>A <strong>bounding box + class label</strong> for <em>each</em> object</td>
+</tr>
+<tr>
+<td><strong>Semantic segmentation</strong></td>
+<td>A class for <strong>every pixel</strong> — exact object outlines</td>
+</tr>
+<tr>
+<td><strong>Contextual image analysis</strong></td>
+<td>A natural-language description of the scene (<em>"a person eating an apple"</em>)</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>Quick discriminator: <em>"locate each object"</em> → detection; <em>"pixel-level mask"</em> → segmentation;
+<em>"describe/caption the image"</em> → contextual analysis.</p>
+</blockquote>
+<h2>5.2 Vision models: CNN and ViT</h2>
+<p><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 470" font-family="Segoe UI, Arial, sans-serif" role="img" aria-label="Computer vision models: CNN vs Vision Transformer">
+<rect width="900" height="470" fill="#ffffff"/>
+<defs><marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#5b6b7b"/></marker></defs>
+<text x="450.0" y="34" text-anchor="middle" font-size="22" font-weight="600" fill="#16324f">Computer vision models: CNN vs Vision Transformer</text>
+<rect x="55" y="70" width="385" height="330" rx="10" fill="#e8f1fb" stroke="#0b5cab" stroke-width="2"/>
+<text x="247" y="103" text-anchor="middle" font-size="15" font-weight="600" fill="#0b5cab">Convolutional Neural Network (CNN)</text>
+<text x="247" y="135" text-anchor="middle" font-size="13" font-weight="normal" fill="#5b6b7b">1. Train on labeled images</text>
+<text x="247" y="161" text-anchor="middle" font-size="13" font-weight="normal" fill="#5b6b7b">2. Filters extract numeric features</text>
+<text x="247" y="187" text-anchor="middle" font-size="13" font-weight="normal" fill="#5b6b7b">3. Feature maps are flattened</text>
+<text x="247" y="213" text-anchor="middle" font-size="13" font-weight="normal" fill="#5b6b7b">4. Fully-connected layers predict class</text>
+<text x="247" y="239" text-anchor="middle" font-size="13" font-weight="normal" fill="#5b6b7b">5. Output = probability per class</text>
+<text x="247" y="300" text-anchor="middle" font-size="12.5" font-weight="normal" fill="#5b6b7b">Classic approach for image</text>
+<text x="247" y="320" text-anchor="middle" font-size="12.5" font-weight="normal" fill="#5b6b7b">classification tasks</text>
+<rect x="460" y="70" width="385" height="330" rx="10" fill="#f3ecfe" stroke="#7a3ee8" stroke-width="2"/>
+<text x="652" y="103" text-anchor="middle" font-size="15" font-weight="600" fill="#7a3ee8">Vision Transformer (ViT)</text>
+<text x="652" y="135" text-anchor="middle" font-size="13" font-weight="normal" fill="#5b6b7b">1. Image split into patches</text>
+<text x="652" y="161" text-anchor="middle" font-size="13" font-weight="normal" fill="#5b6b7b">2. Patches → embedding vectors</text>
+<text x="652" y="187" text-anchor="middle" font-size="13" font-weight="normal" fill="#5b6b7b">3. Attention encodes visual relationships</text>
+<text x="652" y="213" text-anchor="middle" font-size="13" font-weight="normal" fill="#5b6b7b">4. Cross-modal attention combines vision</text>
+<text x="652" y="239" text-anchor="middle" font-size="13" font-weight="normal" fill="#5b6b7b">    + language vector spaces</text>
+<text x="652" y="300" text-anchor="middle" font-size="12.5" font-weight="normal" fill="#5b6b7b">Foundation of multimodal models that</text>
+<text x="652" y="320" text-anchor="middle" font-size="12.5" font-weight="normal" fill="#5b6b7b">accept both images and text</text>
+<text x="450" y="440" text-anchor="middle" font-size="13.5" font-weight="normal" fill="#5b6b7b">Multimodal models let you prompt with an image + a question in a single request</text>
+</svg></p>
+<p><strong>Convolutional neural network (CNN)</strong> — the classic classifier:
+1. train on images with known labels;
+2. <strong>filters extract numeric features</strong> from the pixels (they are <em>not</em> cosmetic effects);
+3. feature maps are flattened;
+4. a fully connected network predicts the class;
+5. output includes a <strong>probability per class</strong>.</p>
+<p><strong>Vision transformer (ViT)</strong> — the modern, transformer-based approach:
+1. the image is split into <strong>patches</strong>, each turned into an embedding vector from pixel values;
+2. <strong>attention</strong> encodes relationships between visual features in vector space;
+3. <strong>cross-modal attention</strong> combines the visual vector space with language vectors — producing
+   a <strong>multimodal model</strong> that understands images <em>and</em> text together.</p>
+<p>A <strong>multimodal model</strong> can understand and work with <strong>more than one type of data</strong> (e.g. accept
+an image plus a text question in the same prompt).</p>
+<h2>5.3 Image analysis with multimodal models</h2>
+<p>Use the OpenAI API's <strong>multi-part content</strong> structure — one message containing an
+<code>input_text</code> part and an <code>input_image</code> part. Images can be <strong>URLs or base64-encoded data</strong>:</p>
+<pre><code class="language-python">import base64
+from openai import OpenAI
+
+client = OpenAI(base_url=&quot;&lt;foundry-endpoint&gt;&quot;, api_key=&quot;&lt;api-key&gt;&quot;)
+
+with open(&quot;banana.png&quot;, &quot;rb&quot;) as f:
+    image = base64.b64encode(f.read()).decode(&quot;utf-8&quot;)
+
+response = client.responses.create(
+    model=&quot;&lt;model-deployment-name&gt;&quot;,
+    input=[{&quot;role&quot;: &quot;user&quot;, &quot;content&quot;: [
+        {&quot;type&quot;: &quot;input_text&quot;,  &quot;text&quot;: &quot;What desserts can I make with this?&quot;},
+        {&quot;type&quot;: &quot;input_image&quot;, &quot;image_url&quot;: f&quot;data:image/png;base64,{image}&quot;}]}])
+print(response.output[0].content[0].text)
+</code></pre>
+<h2>5.4 Generating images and video</h2>
+<p><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 330" font-family="Segoe UI, Arial, sans-serif" role="img" aria-label="Diffusion models: how images are generated">
+<rect width="900" height="330" fill="#ffffff"/>
+<defs><marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#5b6b7b"/></marker></defs>
+<text x="450.0" y="34" text-anchor="middle" font-size="22" font-weight="600" fill="#16324f">Diffusion models: how images are generated</text>
+<rect x="40.0" y="80" width="141.6" height="120" rx="10" fill="#e6f4e6" stroke="#107c10" stroke-width="2"/>
+<circle cx="61.0" cy="103" r="12" fill="#107c10"/>
+<text x="61.0" y="108" text-anchor="middle" font-size="13" font-weight="600" fill="#fff">1</text>
+<text x="80.0" y="108" text-anchor="start" font-size="14" font-weight="600" fill="#16324f">Training</text>
+<text x="110.8" y="134" text-anchor="middle" font-size="12" font-weight="normal" fill="#5b6b7b">Add visual noise to</text>
+<text x="110.8" y="153" text-anchor="middle" font-size="12" font-weight="normal" fill="#5b6b7b">labeled images,</text>
+<text x="110.8" y="172" text-anchor="middle" font-size="12" font-weight="normal" fill="#5b6b7b">step by step</text>
+<line x1="184.6" y1="140.0" x2="206.6" y2="140.0" stroke="#5b6b7b" stroke-width="2.2" marker-end="url(#arr)"/>
+<rect x="209.6" y="80" width="141.6" height="120" rx="10" fill="#e6f4e6" stroke="#107c10" stroke-width="2"/>
+<circle cx="230.6" cy="103" r="12" fill="#107c10"/>
+<text x="230.6" y="108" text-anchor="middle" font-size="13" font-weight="600" fill="#fff">2</text>
+<text x="249.6" y="108" text-anchor="start" font-size="14" font-weight="600" fill="#16324f">Learning</text>
+<text x="280.4" y="134" text-anchor="middle" font-size="12" font-weight="normal" fill="#5b6b7b">Model learns how</text>
+<text x="280.4" y="153" text-anchor="middle" font-size="12" font-weight="normal" fill="#5b6b7b">noise changes an</text>
+<text x="280.4" y="172" text-anchor="middle" font-size="12" font-weight="normal" fill="#5b6b7b">image + its label</text>
+<line x1="354.2" y1="140.0" x2="376.2" y2="140.0" stroke="#5b6b7b" stroke-width="2.2" marker-end="url(#arr)"/>
+<rect x="379.2" y="80" width="141.6" height="120" rx="10" fill="#e6f4e6" stroke="#107c10" stroke-width="2"/>
+<circle cx="400.2" cy="103" r="12" fill="#107c10"/>
+<text x="400.2" y="108" text-anchor="middle" font-size="13" font-weight="600" fill="#fff">3</text>
+<text x="419.2" y="108" text-anchor="start" font-size="14" font-weight="600" fill="#16324f">Generation</text>
+<text x="450.0" y="134" text-anchor="middle" font-size="12" font-weight="normal" fill="#5b6b7b">Start from random</text>
+<text x="450.0" y="153" text-anchor="middle" font-size="12" font-weight="normal" fill="#5b6b7b">pixels (pure noise)</text>
+<line x1="523.8" y1="140.0" x2="545.8" y2="140.0" stroke="#5b6b7b" stroke-width="2.2" marker-end="url(#arr)"/>
+<rect x="548.8" y="80" width="141.6" height="120" rx="10" fill="#e6f4e6" stroke="#107c10" stroke-width="2"/>
+<circle cx="569.8" cy="103" r="12" fill="#107c10"/>
+<text x="569.8" y="108" text-anchor="middle" font-size="13" font-weight="600" fill="#fff">4</text>
+<text x="588.8" y="108" text-anchor="start" font-size="14" font-weight="600" fill="#16324f">Denoising</text>
+<text x="619.5999999999999" y="134" text-anchor="middle" font-size="12" font-weight="normal" fill="#5b6b7b">Iteratively remove</text>
+<text x="619.5999999999999" y="153" text-anchor="middle" font-size="12" font-weight="normal" fill="#5b6b7b">noise guided by</text>
+<text x="619.5999999999999" y="172" text-anchor="middle" font-size="12" font-weight="normal" fill="#5b6b7b">the text prompt</text>
+<line x1="693.4" y1="140.0" x2="715.4" y2="140.0" stroke="#5b6b7b" stroke-width="2.2" marker-end="url(#arr)"/>
+<rect x="718.4" y="80" width="141.6" height="120" rx="10" fill="#e6f4e6" stroke="#107c10" stroke-width="2"/>
+<circle cx="739.4" cy="103" r="12" fill="#107c10"/>
+<text x="739.4" y="108" text-anchor="middle" font-size="13" font-weight="600" fill="#fff">5</text>
+<text x="758.4" y="108" text-anchor="start" font-size="14" font-weight="600" fill="#16324f">Output</text>
+<text x="789.1999999999999" y="134" text-anchor="middle" font-size="12" font-weight="normal" fill="#5b6b7b">Novel image that</text>
+<text x="789.1999999999999" y="153" text-anchor="middle" font-size="12" font-weight="normal" fill="#5b6b7b">matches the</text>
+<text x="789.1999999999999" y="172" text-anchor="middle" font-size="12" font-weight="normal" fill="#5b6b7b">description</text>
+<text x="450" y="255" text-anchor="middle" font-size="13.5" font-weight="normal" fill="#5b6b7b">Video generation (e.g. sora models) runs as an asynchronous job — poll until complete</text>
+</svg></p>
+<p><strong>Diffusion models</strong> power image generation:
+- <strong>Training:</strong> visual "noise" is added to labeled images step by step; the model learns how
+  noise changes an image with a given description.
+- <strong>Generation:</strong> the process is reversed — start from <strong>random pixels</strong> and iteratively remove
+  the learned noise guided by the text prompt, revealing a novel image.</p>
+<p>In Foundry:
+- <strong>Image generation</strong> — search the catalog for <strong>"text to image"</strong> inference-task models
+  (e.g. OpenAI <strong>gpt-image</strong> family); generate programmatically by sending text prompts through
+  the <strong>OpenAI Responses API</strong> against your deployed image model.
+- <strong>Video generation</strong> — search for <strong>"video generation"</strong> models (e.g. OpenAI <strong>sora</strong>).
+  Video jobs run <strong>asynchronously</strong> because generation is <strong>resource-intensive and takes time</strong>:
+  you submit the job, then poll for completion.</p>
+<h2>5.5 Quick self-check</h2>
+<ol>
+<li>Which task labels every pixel? <em>(semantic segmentation)</em></li>
+<li>What do CNN filters do? <em>(extract numeric features from images)</em></li>
+<li>Two accepted image formats in a multimodal prompt? <em>(URL or base64 data)</em></li>
+<li>Why is sora video generation asynchronous? <em>(resource-intensive, takes time)</em></li>
+</ol></div><div class="module" id="m06"><h1>Module 6 — Information Extraction</h1>
+<blockquote>
+<p><strong>Public references:</strong> <a href="https://aka.ms/mslearn-ai-info-concepts">https://aka.ms/mslearn-ai-info-concepts</a> · <a href="https://aka.ms/mslearn-get-started-information-extraction">https://aka.ms/mslearn-get-started-information-extraction</a></p>
+</blockquote>
+<hr />
+<h2>6.1 What is information extraction?</h2>
+<p>Information extraction means <strong>analyzing unstructured content to identify and extract relevant
+fields and values</strong> — converting digital content into useful, structured data. Sources include:</p>
+<ul>
+<li>documents and emails,</li>
+<li>business cards and receipts,</li>
+<li>invoices, contracts and other forms,</li>
+<li>images,</li>
+<li>audio recordings and video.</li>
+</ul>
+<p>Classic scenario: a photographed receipt becomes a pre-filled expense claim (vendor, date,
+amount) with no manual typing.</p>
+<h2>6.2 Optical Character Recognition (OCR)</h2>
+<p><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 330" font-family="Segoe UI, Arial, sans-serif" role="img" aria-label="Optical Character Recognition (OCR) pipeline">
+<rect width="900" height="330" fill="#ffffff"/>
+<defs><marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#5b6b7b"/></marker></defs>
+<text x="450.0" y="34" text-anchor="middle" font-size="22" font-weight="600" fill="#16324f">Optical Character Recognition (OCR) pipeline</text>
+<rect x="40.0" y="80" width="141.6" height="120" rx="10" fill="#fdeee3" stroke="#c74e0c" stroke-width="2"/>
+<circle cx="61.0" cy="103" r="12" fill="#c74e0c"/>
+<text x="61.0" y="108" text-anchor="middle" font-size="13" font-weight="600" fill="#fff">1</text>
+<text x="80.0" y="108" text-anchor="start" font-size="14" font-weight="600" fill="#16324f">Acquisition</text>
+<text x="110.8" y="134" text-anchor="middle" font-size="12" font-weight="normal" fill="#5b6b7b">Scan / photo /</text>
+<text x="110.8" y="153" text-anchor="middle" font-size="12" font-weight="normal" fill="#5b6b7b">PDF input</text>
+<line x1="184.6" y1="140.0" x2="206.6" y2="140.0" stroke="#5b6b7b" stroke-width="2.2" marker-end="url(#arr)"/>
+<rect x="209.6" y="80" width="141.6" height="120" rx="10" fill="#fdeee3" stroke="#c74e0c" stroke-width="2"/>
+<circle cx="230.6" cy="103" r="12" fill="#c74e0c"/>
+<text x="230.6" y="108" text-anchor="middle" font-size="13" font-weight="600" fill="#fff">2</text>
+<text x="249.6" y="108" text-anchor="start" font-size="14" font-weight="600" fill="#16324f">Pre-processing</text>
+<text x="280.4" y="134" text-anchor="middle" font-size="12" font-weight="normal" fill="#5b6b7b">Enhance image;</text>
+<text x="280.4" y="153" text-anchor="middle" font-size="12" font-weight="normal" fill="#5b6b7b">deskew, denoise</text>
+<line x1="354.2" y1="140.0" x2="376.2" y2="140.0" stroke="#5b6b7b" stroke-width="2.2" marker-end="url(#arr)"/>
+<rect x="379.2" y="80" width="141.6" height="120" rx="10" fill="#fdeee3" stroke="#c74e0c" stroke-width="2"/>
+<circle cx="400.2" cy="103" r="12" fill="#c74e0c"/>
+<text x="400.2" y="108" text-anchor="middle" font-size="13" font-weight="600" fill="#fff">3</text>
+<text x="419.2" y="108" text-anchor="start" font-size="14" font-weight="600" fill="#16324f">Region detection</text>
+<text x="450.0" y="134" text-anchor="middle" font-size="12" font-weight="normal" fill="#5b6b7b">Find areas that</text>
+<text x="450.0" y="153" text-anchor="middle" font-size="12" font-weight="normal" fill="#5b6b7b">contain text</text>
+<line x1="523.8" y1="140.0" x2="545.8" y2="140.0" stroke="#5b6b7b" stroke-width="2.2" marker-end="url(#arr)"/>
+<rect x="548.8" y="80" width="141.6" height="120" rx="10" fill="#fdeee3" stroke="#c74e0c" stroke-width="2"/>
+<circle cx="569.8" cy="103" r="12" fill="#c74e0c"/>
+<text x="569.8" y="108" text-anchor="middle" font-size="13" font-weight="600" fill="#fff">4</text>
+<text x="588.8" y="108" text-anchor="start" font-size="14" font-weight="600" fill="#16324f">Recognition</text>
+<text x="619.5999999999999" y="134" text-anchor="middle" font-size="12" font-weight="normal" fill="#5b6b7b">Classify individual</text>
+<text x="619.5999999999999" y="153" text-anchor="middle" font-size="12" font-weight="normal" fill="#5b6b7b">characters &amp; words</text>
+<line x1="693.4" y1="140.0" x2="715.4" y2="140.0" stroke="#5b6b7b" stroke-width="2.2" marker-end="url(#arr)"/>
+<rect x="718.4" y="80" width="141.6" height="120" rx="10" fill="#fdeee3" stroke="#c74e0c" stroke-width="2"/>
+<circle cx="739.4" cy="103" r="12" fill="#c74e0c"/>
+<text x="739.4" y="108" text-anchor="middle" font-size="13" font-weight="600" fill="#fff">5</text>
+<text x="758.4" y="108" text-anchor="start" font-size="14" font-weight="600" fill="#16324f">Output</text>
+<text x="789.1999999999999" y="134" text-anchor="middle" font-size="12" font-weight="normal" fill="#5b6b7b">Machine-readable</text>
+<text x="789.1999999999999" y="153" text-anchor="middle" font-size="12" font-weight="normal" fill="#5b6b7b">text + positions</text>
+<text x="450" y="255" text-anchor="middle" font-size="13.5" font-weight="normal" fill="#5b6b7b">OCR reads the text; field extraction gives that text business meaning</text>
+</svg></p>
+<p><strong>OCR converts images of text into machine-readable text data.</strong> The pipeline:</p>
+<ol>
+<li><strong>Image acquisition &amp; input</strong> — scan, photo or PDF.</li>
+<li><strong>Pre-processing &amp; enhancement</strong> — deskew, denoise, sharpen.</li>
+<li><strong>Text region detection</strong> — find the areas that contain text.</li>
+<li><strong>Character recognition &amp; classification</strong> — identify the characters and words.</li>
+<li><strong>Output generation &amp; post-processing</strong> — machine-readable text with positions.</li>
+</ol>
+<p>OCR <em>reads</em> the text — it doesn't know what the text <em>means</em>.</p>
+<h2>6.3 Field extraction and mapping</h2>
+<p><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 330" font-family="Segoe UI, Arial, sans-serif" role="img" aria-label="Field extraction &amp; mapping (Azure Content Understanding)">
+<rect width="900" height="330" fill="#ffffff"/>
+<defs><marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#5b6b7b"/></marker></defs>
+<text x="450.0" y="34" text-anchor="middle" font-size="22" font-weight="600" fill="#16324f">Field extraction &amp; mapping (Azure Content Understanding)</text>
+<rect x="40.0" y="80" width="141.6" height="120" rx="10" fill="#e3f5f5" stroke="#038387" stroke-width="2"/>
+<circle cx="61.0" cy="103" r="12" fill="#038387"/>
+<text x="61.0" y="108" text-anchor="middle" font-size="13" font-weight="600" fill="#fff">1</text>
+<text x="80.0" y="108" text-anchor="start" font-size="14" font-weight="600" fill="#16324f">Ingest OCR</text>
+<text x="110.8" y="134" text-anchor="middle" font-size="12" font-weight="normal" fill="#5b6b7b">Raw recognized</text>
+<text x="110.8" y="153" text-anchor="middle" font-size="12" font-weight="normal" fill="#5b6b7b">text + layout</text>
+<line x1="184.6" y1="140.0" x2="206.6" y2="140.0" stroke="#5b6b7b" stroke-width="2.2" marker-end="url(#arr)"/>
+<rect x="209.6" y="80" width="141.6" height="120" rx="10" fill="#e3f5f5" stroke="#038387" stroke-width="2"/>
+<circle cx="230.6" cy="103" r="12" fill="#038387"/>
+<text x="230.6" y="108" text-anchor="middle" font-size="13" font-weight="600" fill="#fff">2</text>
+<text x="249.6" y="108" text-anchor="start" font-size="14" font-weight="600" fill="#16324f">Detect fields</text>
+<text x="280.4" y="134" text-anchor="middle" font-size="12" font-weight="normal" fill="#5b6b7b">Find candidate</text>
+<text x="280.4" y="153" text-anchor="middle" font-size="12" font-weight="normal" fill="#5b6b7b">values (dates,</text>
+<text x="280.4" y="172" text-anchor="middle" font-size="12" font-weight="normal" fill="#5b6b7b">totals, names)</text>
+<line x1="354.2" y1="140.0" x2="376.2" y2="140.0" stroke="#5b6b7b" stroke-width="2.2" marker-end="url(#arr)"/>
+<rect x="379.2" y="80" width="141.6" height="120" rx="10" fill="#e3f5f5" stroke="#038387" stroke-width="2"/>
+<circle cx="400.2" cy="103" r="12" fill="#038387"/>
+<text x="400.2" y="108" text-anchor="middle" font-size="13" font-weight="600" fill="#fff">3</text>
+<text x="419.2" y="108" text-anchor="start" font-size="14" font-weight="600" fill="#16324f">Map to schema</text>
+<text x="450.0" y="134" text-anchor="middle" font-size="12" font-weight="normal" fill="#5b6b7b">Associate values</text>
+<text x="450.0" y="153" text-anchor="middle" font-size="12" font-weight="normal" fill="#5b6b7b">with defined fields</text>
+<text x="450.0" y="172" text-anchor="middle" font-size="12" font-weight="normal" fill="#5b6b7b">(analyzer schema)</text>
+<line x1="523.8" y1="140.0" x2="545.8" y2="140.0" stroke="#5b6b7b" stroke-width="2.2" marker-end="url(#arr)"/>
+<rect x="548.8" y="80" width="141.6" height="120" rx="10" fill="#e3f5f5" stroke="#038387" stroke-width="2"/>
+<circle cx="569.8" cy="103" r="12" fill="#038387"/>
+<text x="569.8" y="108" text-anchor="middle" font-size="13" font-weight="600" fill="#fff">4</text>
+<text x="588.8" y="108" text-anchor="start" font-size="14" font-weight="600" fill="#16324f">Normalize</text>
+<text x="619.5999999999999" y="134" text-anchor="middle" font-size="12" font-weight="normal" fill="#5b6b7b">Standardize formats:</text>
+<text x="619.5999999999999" y="153" text-anchor="middle" font-size="12" font-weight="normal" fill="#5b6b7b">$20 → 20.00,</text>
+<text x="619.5999999999999" y="172" text-anchor="middle" font-size="12" font-weight="normal" fill="#5b6b7b">01/01 → 2025-01-01</text>
+<line x1="693.4" y1="140.0" x2="715.4" y2="140.0" stroke="#5b6b7b" stroke-width="2.2" marker-end="url(#arr)"/>
+<rect x="718.4" y="80" width="141.6" height="120" rx="10" fill="#e3f5f5" stroke="#038387" stroke-width="2"/>
+<circle cx="739.4" cy="103" r="12" fill="#038387"/>
+<text x="739.4" y="108" text-anchor="middle" font-size="13" font-weight="600" fill="#fff">5</text>
+<text x="758.4" y="108" text-anchor="start" font-size="14" font-weight="600" fill="#16324f">Integrate</text>
+<text x="789.1999999999999" y="134" text-anchor="middle" font-size="12" font-weight="normal" fill="#5b6b7b">JSON results feed</text>
+<text x="789.1999999999999" y="153" text-anchor="middle" font-size="12" font-weight="normal" fill="#5b6b7b">business systems</text>
+<text x="789.1999999999999" y="172" text-anchor="middle" font-size="12" font-weight="normal" fill="#5b6b7b">via REST API</text>
+<text x="450" y="255" text-anchor="middle" font-size="13.5" font-weight="normal" fill="#5b6b7b">Predefined analyzers for invoices/receipts; custom analyzers from your own sample schema</text>
+</svg></p>
+<p>Turning OCR output into business data:</p>
+<ol>
+<li><strong>OCR output ingestion</strong> — raw recognized text + layout.</li>
+<li><strong>Field detection &amp; candidate identification</strong> — spot values that look like dates, totals,
+   names.</li>
+<li><strong>Field mapping &amp; association</strong> — attach each value to the right schema field. Generative AI
+   improves this step by <strong>using semantic language models to match extracted values to data
+   fields accurately</strong> (no hand-coded rules per document type).</li>
+<li><strong>Data normalization &amp; standardization</strong> — <code>$20</code> → <code>20.00</code>, <code>01/01/2025</code> → <code>2025-01-01</code>.</li>
+<li><strong>Integration</strong> — structured results flow into business processes and systems.</li>
+</ol>
+<h2>6.4 Azure Content Understanding in Foundry Tools</h2>
+<p><strong>Azure Content Understanding</strong> is Foundry's information-extraction service. Its key advantage
+over plain OCR: it <strong>understands document structure and maps extracted data to a defined
+schema</strong> (with confidence scores per field).</p>
+<ul>
+<li><strong>Analyzers</strong> define <strong>how content is processed and what structured data is returned</strong>:</li>
+<li><strong>predefined analyzers</strong> for common documents — invoices, receipts, contracts, call
+    recordings;</li>
+<li><strong>custom analyzers</strong> — define your own schema from <strong>sample documents</strong>.</li>
+<li>Results are retrieved as <strong>JSON via the REST API</strong>.</li>
+<li>With the Python SDK, analysis is <strong>asynchronous</strong>: you submit content, then <strong>poll a URL until
+  the analysis job completes</strong> (results are not returned in the same request).</li>
+</ul>
+<h2>6.5 Audio and video extraction</h2>
+<p>The same analyzer concept applies to media:</p>
+<ul>
+<li><strong>post-call analysis</strong> (contact centers — sentiment, topics, speakers),</li>
+<li><strong>voice-message automation</strong>,</li>
+<li><strong>video call transcription and summary</strong>,</li>
+<li><strong>video recording analysis</strong>.</li>
+</ul>
+<h2>6.6 Quick self-check</h2>
+<ol>
+<li>What does OCR stand for and do? <em>(optical character recognition — images of text → machine-readable text)</em></li>
+<li>What defines the schema and processing behavior in Content Understanding? <em>(an analyzer)</em></li>
+<li>After submitting content via the SDK, how do you get results? <em>(poll until the job completes)</em></li>
+<li>Content Understanding vs OCR in one line? <em>(CU adds structure + schema mapping on top of reading text)</em></li>
+</ol></div></body></html>

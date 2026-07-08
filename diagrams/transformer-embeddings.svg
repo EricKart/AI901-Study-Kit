@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 440" font-family="Segoe UI, Arial, sans-serif" role="img" aria-label="How language models work: tokens, embeddings, attention">
+<rect width="900" height="440" fill="#ffffff"/>
+<defs><marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#5b6b7b"/></marker></defs>
+<text x="450.0" y="34" text-anchor="middle" font-size="22" font-weight="600" fill="#16324f">How language models work: tokens, embeddings, attention</text>
+<rect x="40.0" y="90" width="184.0" height="130" rx="10" fill="#e8f1fb" stroke="#0b5cab" stroke-width="2"/>
+<circle cx="61.0" cy="113" r="12" fill="#0b5cab"/>
+<text x="61.0" y="118" text-anchor="middle" font-size="13" font-weight="600" fill="#fff">1</text>
+<text x="80.0" y="118" text-anchor="start" font-size="14" font-weight="600" fill="#16324f">Tokenization</text>
+<text x="132.0" y="144" text-anchor="middle" font-size="12" font-weight="normal" fill="#5b6b7b">Text is split into</text>
+<text x="132.0" y="163" text-anchor="middle" font-size="12" font-weight="normal" fill="#5b6b7b">tokens (words /</text>
+<text x="132.0" y="182" text-anchor="middle" font-size="12" font-weight="normal" fill="#5b6b7b">word-parts)</text>
+<line x1="227.0" y1="155.0" x2="249.0" y2="155.0" stroke="#5b6b7b" stroke-width="2.2" marker-end="url(#arr)"/>
+<rect x="252.0" y="90" width="184.0" height="130" rx="10" fill="#e8f1fb" stroke="#0b5cab" stroke-width="2"/>
+<circle cx="273.0" cy="113" r="12" fill="#0b5cab"/>
+<text x="273.0" y="118" text-anchor="middle" font-size="13" font-weight="600" fill="#fff">2</text>
+<text x="292.0" y="118" text-anchor="start" font-size="14" font-weight="600" fill="#16324f">Embeddings</text>
+<text x="344.0" y="144" text-anchor="middle" font-size="12" font-weight="normal" fill="#5b6b7b">Each token becomes a</text>
+<text x="344.0" y="163" text-anchor="middle" font-size="12" font-weight="normal" fill="#5b6b7b">vector that captures</text>
+<text x="344.0" y="182" text-anchor="middle" font-size="12" font-weight="normal" fill="#5b6b7b">semantic meaning</text>
+<line x1="439.0" y1="155.0" x2="461.0" y2="155.0" stroke="#5b6b7b" stroke-width="2.2" marker-end="url(#arr)"/>
+<rect x="464.0" y="90" width="184.0" height="130" rx="10" fill="#e8f1fb" stroke="#0b5cab" stroke-width="2"/>
+<circle cx="485.0" cy="113" r="12" fill="#0b5cab"/>
+<text x="485.0" y="118" text-anchor="middle" font-size="13" font-weight="600" fill="#fff">3</text>
+<text x="504.0" y="118" text-anchor="start" font-size="14" font-weight="600" fill="#16324f">Attention</text>
+<text x="556.0" y="144" text-anchor="middle" font-size="12" font-weight="normal" fill="#5b6b7b">Weights relate every</text>
+<text x="556.0" y="163" text-anchor="middle" font-size="12" font-weight="normal" fill="#5b6b7b">token to the tokens</text>
+<text x="556.0" y="182" text-anchor="middle" font-size="12" font-weight="normal" fill="#5b6b7b">around it in context</text>
+<line x1="651.0" y1="155.0" x2="673.0" y2="155.0" stroke="#5b6b7b" stroke-width="2.2" marker-end="url(#arr)"/>
+<rect x="676.0" y="90" width="184.0" height="130" rx="10" fill="#e8f1fb" stroke="#0b5cab" stroke-width="2"/>
+<circle cx="697.0" cy="113" r="12" fill="#0b5cab"/>
+<text x="697.0" y="118" text-anchor="middle" font-size="13" font-weight="600" fill="#fff">4</text>
+<text x="716.0" y="118" text-anchor="start" font-size="14" font-weight="600" fill="#16324f">Prediction</text>
+<text x="768.0" y="144" text-anchor="middle" font-size="12" font-weight="normal" fill="#5b6b7b">Model computes the</text>
+<text x="768.0" y="163" text-anchor="middle" font-size="12" font-weight="normal" fill="#5b6b7b">most probable</text>
+<text x="768.0" y="182" text-anchor="middle" font-size="12" font-weight="normal" fill="#5b6b7b">next token</text>
+<rect x="60" y="260" width="780" height="150" rx="10" fill="#f7f9fc" stroke="#5b6b7b" stroke-width="2" stroke-dasharray="5 5"/>
+<text x="450" y="292" text-anchor="middle" font-size="14.5" font-weight="600" fill="#16324f">Vector space intuition</text>
+<text x="450" y="318" text-anchor="middle" font-size="13" font-weight="normal" fill="#5b6b7b">Semantically similar tokens point in similar directions:  &quot;dog&quot; ≈ &quot;puppy&quot;,  &quot;cat&quot; ≈ &quot;kitten&quot;</text>
+<text x="450" y="342" text-anchor="middle" font-size="13" font-weight="normal" fill="#5b6b7b">Vector arithmetic captures relationships:  dog + young ≈ puppy</text>
+<text x="450" y="366" text-anchor="middle" font-size="13" font-weight="normal" fill="#5b6b7b">LLMs use the transformer architecture; SLMs are compact versions for constrained devices</text>
+</svg>

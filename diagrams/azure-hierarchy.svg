@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 460" font-family="Segoe UI, Arial, sans-serif" role="img" aria-label="Microsoft Azure: organizational hierarchy">
+<rect width="900" height="460" fill="#ffffff"/>
+<defs><marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#5b6b7b"/></marker></defs>
+<text x="450.0" y="34" text-anchor="middle" font-size="22" font-weight="600" fill="#16324f">Microsoft Azure: organizational hierarchy</text>
+<rect x="60" y="60" width="780" height="370" rx="10" fill="#f4f8fd" stroke="#0b5cab" stroke-width="2"/>
+<text x="140" y="90" text-anchor="middle" font-size="17" font-weight="600" fill="#0b5cab">Tenant</text>
+<text x="640" y="90" text-anchor="middle" font-size="13" font-weight="normal" fill="#5b6b7b">Security boundary — identities via Microsoft Entra ID</text>
+<rect x="100" y="110" width="700" height="290" rx="10" fill="#eef5fc" stroke="#0b5cab" stroke-width="2"/>
+<text x="200" y="140" text-anchor="middle" font-size="16" font-weight="600" fill="#0b5cab">Subscription</text>
+<text x="620" y="140" text-anchor="middle" font-size="13" font-weight="normal" fill="#5b6b7b">Billing boundary</text>
+<rect x="140" y="160" width="620" height="210" rx="10" fill="#e8f1fb" stroke="#0b5cab" stroke-width="2"/>
+<text x="265" y="190" text-anchor="middle" font-size="15" font-weight="600" fill="#0b5cab">Resource group</text>
+<text x="600" y="190" text-anchor="middle" font-size="13" font-weight="normal" fill="#5b6b7b">Organization &amp; management</text>
+<rect x="180" y="215" width="170" height="120" rx="10" fill="#ffffff" stroke="#0b5cab" stroke-width="2"/>
+<text x="265" y="265" text-anchor="middle" font-size="14" font-weight="600" fill="#16324f">Microsoft Foundry</text>
+<text x="265" y="290" text-anchor="middle" font-size="12" font-weight="normal" fill="#5b6b7b">AI apps &amp; agents</text>
+<rect x="370" y="215" width="170" height="120" rx="10" fill="#ffffff" stroke="#0b5cab" stroke-width="2"/>
+<text x="455" y="265" text-anchor="middle" font-size="14" font-weight="600" fill="#16324f">App Service</text>
+<text x="455" y="290" text-anchor="middle" font-size="12" font-weight="normal" fill="#5b6b7b">Web apps</text>
+<rect x="560" y="215" width="170" height="120" rx="10" fill="#ffffff" stroke="#0b5cab" stroke-width="2"/>
+<text x="645" y="265" text-anchor="middle" font-size="14" font-weight="600" fill="#16324f">Storage / SQL</text>
+<text x="645" y="290" text-anchor="middle" font-size="12" font-weight="normal" fill="#5b6b7b">Data services</text>
+<text x="450" y="425" text-anchor="middle" font-size="13" font-weight="normal" fill="#5b6b7b">Resources = infrastructure &amp; application services — the building blocks of solutions</text>
+</svg>

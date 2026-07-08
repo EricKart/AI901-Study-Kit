@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 400" font-family="Segoe UI, Arial, sans-serif" role="img" aria-label="Microsoft&#x27;s six principles of responsible AI">
+<rect width="900" height="400" fill="#ffffff"/>
+<defs><marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#5b6b7b"/></marker></defs>
+<text x="450.0" y="34" text-anchor="middle" font-size="22" font-weight="600" fill="#16324f">Microsoft&#x27;s six principles of responsible AI</text>
+<rect x="55" y="70" width="250" height="135" rx="10" fill="#e8f1fb" stroke="#0b5cab" stroke-width="2"/>
+<text x="180" y="105" text-anchor="middle" font-size="15.5" font-weight="600" fill="#0b5cab">Fairness</text>
+<text x="180" y="132" text-anchor="middle" font-size="12" font-weight="normal" fill="#5b6b7b">Treat all people equitably;</text>
+<text x="180" y="151" text-anchor="middle" font-size="12" font-weight="normal" fill="#5b6b7b">avoid bias in data &amp;</text>
+<text x="180" y="170" text-anchor="middle" font-size="12" font-weight="normal" fill="#5b6b7b">predictions</text>
+<rect x="330" y="70" width="250" height="135" rx="10" fill="#e8f1fb" stroke="#0b5cab" stroke-width="2"/>
+<text x="455" y="105" text-anchor="middle" font-size="15.5" font-weight="600" fill="#0b5cab">Reliability &amp; safety</text>
+<text x="455" y="132" text-anchor="middle" font-size="12" font-weight="normal" fill="#5b6b7b">Operate within defined limits;</text>
+<text x="455" y="151" text-anchor="middle" font-size="12" font-weight="normal" fill="#5b6b7b">test rigorously</text>
+<rect x="605" y="70" width="250" height="135" rx="10" fill="#e8f1fb" stroke="#0b5cab" stroke-width="2"/>
+<text x="730" y="105" text-anchor="middle" font-size="15.5" font-weight="600" fill="#0b5cab">Privacy &amp; security</text>
+<text x="730" y="132" text-anchor="middle" font-size="12" font-weight="normal" fill="#5b6b7b">Protect data used for training</text>
+<text x="730" y="151" text-anchor="middle" font-size="12" font-weight="normal" fill="#5b6b7b">and inference</text>
+<rect x="55" y="225" width="250" height="135" rx="10" fill="#e8f1fb" stroke="#0b5cab" stroke-width="2"/>
+<text x="180" y="260" text-anchor="middle" font-size="15.5" font-weight="600" fill="#0b5cab">Inclusiveness</text>
+<text x="180" y="287" text-anchor="middle" font-size="12" font-weight="normal" fill="#5b6b7b">Empower everyone, including</text>
+<text x="180" y="306" text-anchor="middle" font-size="12" font-weight="normal" fill="#5b6b7b">all abilities</text>
+<rect x="330" y="225" width="250" height="135" rx="10" fill="#e8f1fb" stroke="#0b5cab" stroke-width="2"/>
+<text x="455" y="260" text-anchor="middle" font-size="15.5" font-weight="600" fill="#0b5cab">Transparency</text>
+<text x="455" y="287" text-anchor="middle" font-size="12" font-weight="normal" fill="#5b6b7b">Make purpose, behavior &amp;</text>
+<text x="455" y="306" text-anchor="middle" font-size="12" font-weight="normal" fill="#5b6b7b">limits understandable</text>
+<rect x="605" y="225" width="250" height="135" rx="10" fill="#e8f1fb" stroke="#0b5cab" stroke-width="2"/>
+<text x="730" y="260" text-anchor="middle" font-size="15.5" font-weight="600" fill="#0b5cab">Accountability</text>
+<text x="730" y="287" text-anchor="middle" font-size="12" font-weight="normal" fill="#5b6b7b">People remain answerable for</text>
+<text x="730" y="306" text-anchor="middle" font-size="12" font-weight="normal" fill="#5b6b7b">AI systems</text>
+</svg>

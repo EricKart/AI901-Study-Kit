@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 330" font-family="Segoe UI, Arial, sans-serif" role="img" aria-label="Speech synthesis (text-to-speech) pipeline">
+<rect width="900" height="330" fill="#ffffff"/>
+<defs><marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#5b6b7b"/></marker></defs>
+<text x="450.0" y="34" text-anchor="middle" font-size="22" font-weight="600" fill="#16324f">Speech synthesis (text-to-speech) pipeline</text>
+<rect x="40.0" y="80" width="141.6" height="120" rx="10" fill="#f3ecfe" stroke="#7a3ee8" stroke-width="2"/>
+<circle cx="61.0" cy="103" r="12" fill="#7a3ee8"/>
+<text x="61.0" y="108" text-anchor="middle" font-size="13" font-weight="600" fill="#fff">1</text>
+<text x="80.0" y="108" text-anchor="start" font-size="14" font-weight="600" fill="#16324f">Source text</text>
+<text x="110.8" y="134" text-anchor="middle" font-size="12" font-weight="normal" fill="#5b6b7b">Document content</text>
+<text x="110.8" y="153" text-anchor="middle" font-size="12" font-weight="normal" fill="#5b6b7b">or app/model</text>
+<text x="110.8" y="172" text-anchor="middle" font-size="12" font-weight="normal" fill="#5b6b7b">output</text>
+<line x1="184.6" y1="140.0" x2="206.6" y2="140.0" stroke="#5b6b7b" stroke-width="2.2" marker-end="url(#arr)"/>
+<rect x="209.6" y="80" width="141.6" height="120" rx="10" fill="#f3ecfe" stroke="#7a3ee8" stroke-width="2"/>
+<circle cx="230.6" cy="103" r="12" fill="#7a3ee8"/>
+<text x="230.6" y="108" text-anchor="middle" font-size="13" font-weight="600" fill="#fff">2</text>
+<text x="249.6" y="108" text-anchor="start" font-size="14" font-weight="600" fill="#16324f">Normalization</text>
+<text x="280.4" y="134" text-anchor="middle" font-size="12" font-weight="normal" fill="#5b6b7b">Expand Dr. → doctor,</text>
+<text x="280.4" y="153" text-anchor="middle" font-size="12" font-weight="normal" fill="#5b6b7b">3:00pm → three</text>
+<text x="280.4" y="172" text-anchor="middle" font-size="12" font-weight="normal" fill="#5b6b7b">o&#x27;clock P M</text>
+<line x1="354.2" y1="140.0" x2="376.2" y2="140.0" stroke="#5b6b7b" stroke-width="2.2" marker-end="url(#arr)"/>
+<rect x="379.2" y="80" width="141.6" height="120" rx="10" fill="#f3ecfe" stroke="#7a3ee8" stroke-width="2"/>
+<circle cx="400.2" cy="103" r="12" fill="#7a3ee8"/>
+<text x="400.2" y="108" text-anchor="middle" font-size="13" font-weight="600" fill="#fff">3</text>
+<text x="419.2" y="108" text-anchor="start" font-size="14" font-weight="600" fill="#16324f">Linguistic model</text>
+<text x="450.0" y="134" text-anchor="middle" font-size="12" font-weight="normal" fill="#5b6b7b">Map normalized</text>
+<text x="450.0" y="153" text-anchor="middle" font-size="12" font-weight="normal" fill="#5b6b7b">text to phonemes</text>
+<line x1="523.8" y1="140.0" x2="545.8" y2="140.0" stroke="#5b6b7b" stroke-width="2.2" marker-end="url(#arr)"/>
+<rect x="548.8" y="80" width="141.6" height="120" rx="10" fill="#f3ecfe" stroke="#7a3ee8" stroke-width="2"/>
+<circle cx="569.8" cy="103" r="12" fill="#7a3ee8"/>
+<text x="569.8" y="108" text-anchor="middle" font-size="13" font-weight="600" fill="#fff">4</text>
+<text x="588.8" y="108" text-anchor="start" font-size="14" font-weight="600" fill="#16324f">Prosody</text>
+<text x="619.5999999999999" y="134" text-anchor="middle" font-size="12" font-weight="normal" fill="#5b6b7b">Pitch, rhythm &amp;</text>
+<text x="619.5999999999999" y="153" text-anchor="middle" font-size="12" font-weight="normal" fill="#5b6b7b">timbre for natural</text>
+<text x="619.5999999999999" y="172" text-anchor="middle" font-size="12" font-weight="normal" fill="#5b6b7b">pronunciation</text>
+<line x1="693.4" y1="140.0" x2="715.4" y2="140.0" stroke="#5b6b7b" stroke-width="2.2" marker-end="url(#arr)"/>
+<rect x="718.4" y="80" width="141.6" height="120" rx="10" fill="#f3ecfe" stroke="#7a3ee8" stroke-width="2"/>
+<circle cx="739.4" cy="103" r="12" fill="#7a3ee8"/>
+<text x="739.4" y="108" text-anchor="middle" font-size="13" font-weight="600" fill="#fff">5</text>
+<text x="758.4" y="108" text-anchor="start" font-size="14" font-weight="600" fill="#16324f">Waveform</text>
+<text x="789.1999999999999" y="134" text-anchor="middle" font-size="12" font-weight="normal" fill="#5b6b7b">Encode digital</text>
+<text x="789.1999999999999" y="153" text-anchor="middle" font-size="12" font-weight="normal" fill="#5b6b7b">audio output</text>
+<text x="450" y="255" text-anchor="middle" font-size="13.5" font-weight="normal" fill="#5b6b7b">Output: spoken audio — used by assistants, screen readers, alerts, e-learning</text>
+</svg>

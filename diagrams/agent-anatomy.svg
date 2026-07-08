@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 450" font-family="Segoe UI, Arial, sans-serif" role="img" aria-label="Anatomy of an AI agent">
+<rect width="900" height="450" fill="#ffffff"/>
+<defs><marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#5b6b7b"/></marker></defs>
+<text x="450.0" y="34" text-anchor="middle" font-size="22" font-weight="600" fill="#16324f">Anatomy of an AI agent</text>
+<rect x="60" y="100" width="240" height="280" rx="10" fill="#e8f1fb" stroke="#0b5cab" stroke-width="2"/>
+<text x="180" y="140" text-anchor="middle" font-size="18" font-weight="600" fill="#0b5cab">Agent</text>
+<text x="180" y="170" text-anchor="middle" font-size="12.5" font-weight="normal" fill="#5b6b7b">Autonomous, action-capable</text>
+<text x="180" y="189" text-anchor="middle" font-size="12.5" font-weight="normal" fill="#5b6b7b">AI assistant that works with</text>
+<text x="180" y="208" text-anchor="middle" font-size="12.5" font-weight="normal" fill="#5b6b7b">users and with other agents</text>
+<rect x="400" y="95" width="260" height="82" rx="10" fill="#f3ecfe" stroke="#7a3ee8" stroke-width="2"/>
+<text x="530" y="127" text-anchor="middle" font-size="14.5" font-weight="600" fill="#7a3ee8">Model</text>
+<text x="530" y="149" text-anchor="middle" font-size="11.5" font-weight="normal" fill="#5b6b7b">Language understanding &amp;</text>
+<text x="530" y="168" text-anchor="middle" font-size="11.5" font-weight="normal" fill="#5b6b7b">reasoning</text>
+<line x1="305" y1="240" x2="395" y2="136" stroke="#5b6b7b" stroke-width="2.2" marker-end="url(#arr)"/>
+<rect x="400" y="195" width="260" height="82" rx="10" fill="#e3f5f5" stroke="#038387" stroke-width="2"/>
+<text x="530" y="227" text-anchor="middle" font-size="14.5" font-weight="600" fill="#038387">Instructions</text>
+<text x="530" y="249" text-anchor="middle" font-size="11.5" font-weight="normal" fill="#5b6b7b">Define behavior, scope &amp; tone</text>
+<line x1="305" y1="240" x2="395" y2="236" stroke="#5b6b7b" stroke-width="2.2" marker-end="url(#arr)"/>
+<rect x="400" y="295" width="260" height="82" rx="10" fill="#fdeee3" stroke="#c74e0c" stroke-width="2"/>
+<text x="530" y="327" text-anchor="middle" font-size="14.5" font-weight="600" fill="#c74e0c">Tools</text>
+<text x="530" y="349" text-anchor="middle" font-size="11.5" font-weight="normal" fill="#5b6b7b">Capabilities the agent can</text>
+<text x="530" y="368" text-anchor="middle" font-size="11.5" font-weight="normal" fill="#5b6b7b">invoke</text>
+<line x1="305" y1="240" x2="395" y2="336" stroke="#5b6b7b" stroke-width="2.2" marker-end="url(#arr)"/>
+<rect x="710" y="150" width="160" height="90" rx="10" fill="#ffffff" stroke="#c74e0c" stroke-width="2"/>
+<text x="790" y="185" text-anchor="middle" font-size="13.5" font-weight="600" fill="#c74e0c">Knowledge</text>
+<text x="790" y="206" text-anchor="middle" font-size="11.5" font-weight="normal" fill="#5b6b7b">Ground answers</text>
+<text x="790" y="225" text-anchor="middle" font-size="11.5" font-weight="normal" fill="#5b6b7b">in data sources</text>
+<rect x="710" y="260" width="160" height="90" rx="10" fill="#ffffff" stroke="#c74e0c" stroke-width="2"/>
+<text x="790" y="295" text-anchor="middle" font-size="13.5" font-weight="600" fill="#c74e0c">Actions</text>
+<text x="790" y="316" text-anchor="middle" font-size="11.5" font-weight="normal" fill="#5b6b7b">Automate tasks via</text>
+<text x="790" y="335" text-anchor="middle" font-size="11.5" font-weight="normal" fill="#5b6b7b">connected services</text>
+<line x1="665" y1="305" x2="705" y2="220" stroke="#5b6b7b" stroke-width="2.2" marker-end="url(#arr)"/>
+<line x1="665" y1="320" x2="705" y2="300" stroke="#5b6b7b" stroke-width="2.2" marker-end="url(#arr)"/>
+</svg>

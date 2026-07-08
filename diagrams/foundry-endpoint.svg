@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 430" font-family="Segoe UI, Arial, sans-serif" role="img" aria-label="Foundry endpoints: how applications call models and services">
+<rect width="900" height="430" fill="#ffffff"/>
+<defs><marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#5b6b7b"/></marker></defs>
+<text x="450.0" y="34" text-anchor="middle" font-size="22" font-weight="600" fill="#16324f">Foundry endpoints: how applications call models and services</text>
+<rect x="50" y="90" width="230" height="260" rx="10" fill="#e6f4e6" stroke="#107c10" stroke-width="2"/>
+<text x="165" y="125" text-anchor="middle" font-size="15" font-weight="600" fill="#107c10">Client application</text>
+<text x="165" y="152" text-anchor="middle" font-size="12.5" font-weight="normal" fill="#5b6b7b">Uses an SDK (Python, C#, …)</text>
+<text x="165" y="171" text-anchor="middle" font-size="12.5" font-weight="normal" fill="#5b6b7b">that wraps the REST API</text>
+<rect x="90" y="210" width="150" height="110" rx="10" fill="#ffffff" stroke="#107c10" stroke-width="2"/>
+<text x="165" y="250" text-anchor="middle" font-size="15" font-weight="600" fill="#107c10">&lt; SDK &gt;</text>
+<text x="165" y="275" text-anchor="middle" font-size="12" font-weight="normal" fill="#5b6b7b">OpenAI / Azure</text>
+<text x="165" y="294" text-anchor="middle" font-size="12" font-weight="normal" fill="#5b6b7b">client libraries</text>
+<rect x="620" y="90" width="230" height="260" rx="10" fill="#e8f1fb" stroke="#0b5cab" stroke-width="2"/>
+<text x="735" y="125" text-anchor="middle" font-size="15" font-weight="600" fill="#0b5cab">Foundry endpoint</text>
+<text x="735" y="152" text-anchor="middle" font-size="12.5" font-weight="normal" fill="#5b6b7b">HTTPS address of a</text>
+<text x="735" y="171" text-anchor="middle" font-size="12.5" font-weight="normal" fill="#5b6b7b">deployed model or service</text>
+<rect x="660" y="210" width="150" height="110" rx="10" fill="#ffffff" stroke="#0b5cab" stroke-width="2"/>
+<text x="735" y="245" text-anchor="middle" font-size="14" font-weight="600" fill="#0b5cab">Auth</text>
+<text x="735" y="268" text-anchor="middle" font-size="12" font-weight="normal" fill="#5b6b7b">API key, or</text>
+<text x="735" y="287" text-anchor="middle" font-size="12" font-weight="normal" fill="#5b6b7b">Microsoft Entra ID token</text>
+<line x1="285" y1="170" x2="615" y2="170" stroke="#5b6b7b" stroke-width="2.2" marker-end="url(#arr)"/>
+<text x="450.0" y="162" text-anchor="middle" font-size="12" font-weight="normal" fill="#5b6b7b">Request — JSON body + headers</text>
+<line x1="615" y1="285" x2="285" y2="285" stroke="#5b6b7b" stroke-width="2.2" marker-end="url(#arr)"/>
+<text x="450.0" y="277" text-anchor="middle" font-size="12" font-weight="normal" fill="#5b6b7b">Response — JSON results + headers</text>
+<text x="450" y="395" text-anchor="middle" font-size="14" font-weight="normal" fill="#5b6b7b">Endpoint = where to call  ·  Key/token = proof you may call it</text>
+</svg>

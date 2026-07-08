@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 470" font-family="Segoe UI, Arial, sans-serif" role="img" aria-label="Computer vision models: CNN vs Vision Transformer">
+<rect width="900" height="470" fill="#ffffff"/>
+<defs><marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#5b6b7b"/></marker></defs>
+<text x="450.0" y="34" text-anchor="middle" font-size="22" font-weight="600" fill="#16324f">Computer vision models: CNN vs Vision Transformer</text>
+<rect x="55" y="70" width="385" height="330" rx="10" fill="#e8f1fb" stroke="#0b5cab" stroke-width="2"/>
+<text x="247" y="103" text-anchor="middle" font-size="15" font-weight="600" fill="#0b5cab">Convolutional Neural Network (CNN)</text>
+<text x="247" y="135" text-anchor="middle" font-size="13" font-weight="normal" fill="#5b6b7b">1. Train on labeled images</text>
+<text x="247" y="161" text-anchor="middle" font-size="13" font-weight="normal" fill="#5b6b7b">2. Filters extract numeric features</text>
+<text x="247" y="187" text-anchor="middle" font-size="13" font-weight="normal" fill="#5b6b7b">3. Feature maps are flattened</text>
+<text x="247" y="213" text-anchor="middle" font-size="13" font-weight="normal" fill="#5b6b7b">4. Fully-connected layers predict class</text>
+<text x="247" y="239" text-anchor="middle" font-size="13" font-weight="normal" fill="#5b6b7b">5. Output = probability per class</text>
+<text x="247" y="300" text-anchor="middle" font-size="12.5" font-weight="normal" fill="#5b6b7b">Classic approach for image</text>
+<text x="247" y="320" text-anchor="middle" font-size="12.5" font-weight="normal" fill="#5b6b7b">classification tasks</text>
+<rect x="460" y="70" width="385" height="330" rx="10" fill="#f3ecfe" stroke="#7a3ee8" stroke-width="2"/>
+<text x="652" y="103" text-anchor="middle" font-size="15" font-weight="600" fill="#7a3ee8">Vision Transformer (ViT)</text>
+<text x="652" y="135" text-anchor="middle" font-size="13" font-weight="normal" fill="#5b6b7b">1. Image split into patches</text>
+<text x="652" y="161" text-anchor="middle" font-size="13" font-weight="normal" fill="#5b6b7b">2. Patches → embedding vectors</text>
+<text x="652" y="187" text-anchor="middle" font-size="13" font-weight="normal" fill="#5b6b7b">3. Attention encodes visual relationships</text>
+<text x="652" y="213" text-anchor="middle" font-size="13" font-weight="normal" fill="#5b6b7b">4. Cross-modal attention combines vision</text>
+<text x="652" y="239" text-anchor="middle" font-size="13" font-weight="normal" fill="#5b6b7b">    + language vector spaces</text>
+<text x="652" y="300" text-anchor="middle" font-size="12.5" font-weight="normal" fill="#5b6b7b">Foundation of multimodal models that</text>
+<text x="652" y="320" text-anchor="middle" font-size="12.5" font-weight="normal" fill="#5b6b7b">accept both images and text</text>
+<text x="450" y="440" text-anchor="middle" font-size="13.5" font-weight="normal" fill="#5b6b7b">Multimodal models let you prompt with an image + a question in a single request</text>
+</svg>
