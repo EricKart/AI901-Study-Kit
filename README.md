@@ -22,6 +22,7 @@ courseware content**, so it can be freely shared with faculty and students.
 | Read the study notes | [`modules/`](modules/) — 6 chapters below |
 | Teach with slides | [`pptx/`](pptx/) — 7 ready-to-present PowerPoint decks |
 | Print / distribute the full course | [`pdf/AI-901-Complete-Course.pdf`](pdf/AI-901-Complete-Course.pdf) |
+| Prep participants for mock tests (term glossary) | [`pdf/AI-901-Exam-Terminology-Reference.pdf`](pdf/AI-901-Exam-Terminology-Reference.pdf) |
 | Reuse the diagrams | [`diagrams/`](diagrams/) — original SVG diagrams |
 
 ### Hosting the quiz portal on GitHub Pages

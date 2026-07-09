@@ -1,0 +1,648 @@
+<!doctype html><html><head><meta charset='utf-8'><title>AI-901 Exam Terminology Reference</title><style>
+@page { size: A4; margin: 18mm 16mm; }
+* { box-sizing: border-box; }
+body { font-family: 'Segoe UI', Arial, sans-serif; color: #16324f; font-size: 11.5pt;
+       line-height: 1.55; margin: 0; }
+h1 { font-size: 21pt; color: #0b5cab; border-bottom: 3px solid #0b5cab;
+     padding-bottom: 6px; margin: 0 0 12px; }
+h2 { font-size: 14.5pt; color: #0b5cab; margin: 26px 0 8px; page-break-after: avoid; }
+h3 { font-size: 12.5pt; color: #16324f; page-break-after: avoid; }
+table { border-collapse: collapse; width: 100%; margin: 10px 0; font-size: 10.5pt;
+        page-break-inside: avoid; }
+th, td { border: 1px solid #b9cde3; padding: 6px 9px; text-align: left; vertical-align: top; }
+th { background: #e8f1fb; color: #0b5cab; }
+code { background: #f0f4f9; padding: 1px 5px; border-radius: 4px; font-size: 10pt;
+       font-family: Consolas, monospace; }
+blockquote { border-left: 4px solid #0b5cab; background: #f2f7fd; margin: 12px 0;
+             padding: 8px 14px; border-radius: 0 8px 8px 0; page-break-inside: avoid; }
+hr { border: 0; border-top: 1.5px solid #d5e2ef; margin: 22px 0; }
+a { color: #0b5cab; }
+em { color: #5b6b7b; }
+.cover { page-break-after: always; text-align: center; padding-top: 230px; }
+.cover h1 { border: none; font-size: 30pt; }
+.cover .sub { font-size: 14pt; color: #5b6b7b; margin-top: 10px; }
+.cover .meta { margin-top: 60px; color: #5b6b7b; font-size: 11pt; line-height: 1.8; }
+</style></head><body>
+<div class="cover">
+  <h1>AI-901<br/>Exam Terminology &amp; Concepts Reference</h1>
+  <div class="sub">Section-wise glossary companion for the mock tests and the real exam</div>
+  <div class="meta">
+    Study this before attempting any timed test.<br/>
+    Definitions, contrasts, and classic exam traps — no test questions or answers inside.<br/>
+    Faculty Study Kit &middot; original content from public Microsoft Learn documentation
+  </div>
+</div>
+<p><em>A section-wise glossary of every technical term and concept you need for the AI-901 mock test
+and the real exam. Study this </em><em>before</em><em> attempting the tests — it defines the vocabulary and
+the classic confusions, without giving away any test answers.</em></p>
+<hr />
+<h2>Section 1 — The Microsoft Foundry Platform</h2>
+<p><strong>Microsoft Foundry</strong> — Azure's unified platform for building, deploying, evaluating and
+managing AI applications and agents. It is the successor branding of <em>Azure AI Studio</em> and the
+center of the AI-901 exam. Everything below — catalogs, deployments, playgrounds, agents,
+evaluations — lives here.</p>
+<p><strong>Foundry portal</strong> — the no-code web experience at <strong><code>ai.azure.com</code></strong>. Used to browse the model
+catalog, deploy models, test in playgrounds, build agents, and run evaluations. Remember the
+address; distractors will offer Office, Azure ML Studio, or invented URLs.</p>
+<p><strong>Hub</strong> — the <em>top-level workspace</em>. It holds shared security settings, connections, and
+compute that all projects underneath it inherit. Think: the building.</p>
+<p><strong>Project</strong> — a workspace <em>inside a hub</em> for building one specific solution. It contains your
+deployments, agents, files, and evaluations. Think: an office inside the building.</p>
+<p><strong>Deployment</strong> — a <em>callable instance of a model</em> inside a project. A model sitting in the
+catalog cannot be called; only after <strong>you deploy it</strong> (and name the deployment) does it get an
+endpoint your code can reach.</p>
+<p><strong>Model catalog</strong> — the searchable library of models from Microsoft, OpenAI, Meta, Mistral,
+Cohere, and community providers. You <strong>discover, filter, compare, and deploy</strong> from here.
+Microsoft-sold models bill through your Azure subscription.</p>
+<p><strong>Connections</strong> — configured links from a hub/project to external resources (data sources,
+services) used for grounding and integration. Not where you deploy models.</p>
+<p><strong>Playground</strong> — the interactive test surface for a deployed model or agent. It is for
+<em>experimentation</em>: trying prompts, comparing models, tuning parameters — then carrying the
+working configuration into code. It does not replace deployment or the API.</p>
+<blockquote>
+<p><strong>Hierarchy to memorize:</strong> Hub (shared security/resources) → Project (your solution) →
+Deployment (a callable model). Separately, in Azure itself: Tenant (security/Entra ID) →
+Subscription (billing) → Resource group (organization) → Resources.</p>
+</blockquote>
+<hr />
+<h2>Section 2 — Calling Models from Code</h2>
+<p><strong>Endpoint</strong> — the HTTPS URL of your deployed model/service. It answers "<em>where</em> do I call?"</p>
+<p><strong>Credential</strong> — proof you may call the endpoint. Two forms:</p>
+<table>
+<thead>
+<tr>
+<th>Credential</th>
+<th>What it is</th>
+<th>When used</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>API key</strong></td>
+<td>A shared secret string</td>
+<td>Quick starts, demos</td>
+</tr>
+<tr>
+<td><strong>Microsoft Entra ID token</strong> (e.g. via <code>DefaultAzureCredential</code>)</td>
+<td>Identity-based, <em>keyless</em> auth resolved from the running environment (developer sign-in, managed identity)</td>
+<td><strong>Recommended for production</strong> — no secret stored in code</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Deployment name</strong> — the third thing every call needs. In Azure SDK calls the parameter is
+called <code>model</code>, but for Azure deployments you pass <strong>the name you gave your deployment</strong>, <em>not</em>
+the base model's catalog name. Passing the catalog name when your deployment is named
+differently is the classic cause of a <strong><code>DeploymentNotFound</code> (404)</strong> error.</p>
+<p><strong>The three-item rule</strong> — every model call needs: <strong>endpoint + credential + deployment name.</strong></p>
+<p><strong>Statelessness</strong> — chat models have <strong>no memory between calls</strong>. What feels like conversation
+memory is your <em>application</em> re-sending the previous user and assistant messages with each new
+request. Consequence: longer conversations consume <strong>more</strong> tokens, not fewer.</p>
+<p><strong>Response shape</strong> — a chat completion returns a list of <code>choices</code>; each choice holds a
+<code>message</code> with a <code>role</code> and <code>content</code>. The assistant's reply text is at
+<code>response.choices[0].message.content</code>.</p>
+<p><strong><code>finish_reason</code></strong> — why generation stopped:</p>
+<table>
+<thead>
+<tr>
+<th>Value</th>
+<th>Meaning</th>
+<th>Typical fix</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>stop</code></td>
+<td>Natural completion</td>
+<td>—</td>
+</tr>
+<tr>
+<td><code>length</code></td>
+<td>Output hit the <strong>max_tokens</strong> cap → answers cut off mid-sentence</td>
+<td>Raise <code>max_tokens</code></td>
+</tr>
+<tr>
+<td><code>content_filter</code></td>
+<td>Blocked by the safety system</td>
+<td>Review filter settings / prompt</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>Section 3 — Tokens, Parameters &amp; Prompt Engineering</h2>
+<p><strong>Token</strong> — the unit of text a model reads and writes (~a word-piece; roughly 4 English
+characters). <strong>Billing, rate limits, context windows, and <code>max_tokens</code> are all measured in
+tokens.</strong> A token is <em>not</em> a security key (that's a credential) and <em>not</em> a meaning vector
+(that's an embedding).</p>
+<p><strong>Context window</strong> — the maximum number of tokens (prompt + history + response) the model can
+consider in one call. Nothing you configure at request time enlarges it — designs like RAG
+exist precisely to work <em>within</em> it.</p>
+<h3>Request parameters — the most-tested table on the exam</h3>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Controls</th>
+<th>Common trap</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong><code>temperature</code></strong></td>
+<td>Sampling <strong>randomness</strong> — lower = focused/deterministic, higher = creative/varied</td>
+<td>It does <strong>not</strong> control length</td>
+</tr>
+<tr>
+<td><strong><code>top_p</code></strong></td>
+<td>Sampling breadth (nucleus sampling) — an alternative randomness control</td>
+<td>Same family as temperature</td>
+</tr>
+<tr>
+<td><strong><code>max_tokens</code></strong></td>
+<td>Maximum <strong>output length</strong> (and therefore cost)</td>
+<td>It does <strong>not</strong> control creativity</td>
+</tr>
+<tr>
+<td><strong><code>frequency_penalty</code></strong></td>
+<td>Discourages tokens that already appeared often → <strong>reduces repetition</strong> within a response</td>
+<td></td>
+</tr>
+<tr>
+<td><strong><code>presence_penalty</code></strong></td>
+<td>Encourages the model to move to <strong>new topics</strong></td>
+<td>Related to, but different from, frequency penalty</td>
+</tr>
+<tr>
+<td><strong><code>seed</code></strong></td>
+<td>Makes sampling <strong>reproducible</strong> across runs when inputs and settings are identical — for regression testing (often with temperature 0)</td>
+<td></td>
+</tr>
+<tr>
+<td><strong><code>stop</code></strong></td>
+<td>Strings at which generation halts</td>
+<td>Not a safety feature</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><strong>The #1 confusion pair:</strong> <em>temperature vs max_tokens.</em> Randomness vs length. If a scenario
+mentions "inconsistent answers" think temperature; if it mentions "answers too long / cut
+off / expensive" think max_tokens.</p>
+</blockquote>
+<h3>Message roles</h3>
+<table>
+<thead>
+<tr>
+<th>Role</th>
+<th>Carries</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong><code>system</code></strong></td>
+<td>Persona, rules, scope limits, <strong>output format requirements</strong>, and grounding data — set <em>before</em> the conversation and steering every turn</td>
+</tr>
+<tr>
+<td><strong><code>user</code></strong></td>
+<td>The actual request/question</td>
+</tr>
+<tr>
+<td><strong><code>assistant</code></strong></td>
+<td>The model's own previous replies (resent for context)</td>
+</tr>
+<tr>
+<td><strong>tool / function</strong></td>
+<td>Results of tool executions returned to the model</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Few-shot prompting</strong> — including one or more worked input→output examples in the prompt so
+the model imitates the pattern. The most reliable way (together with system-message format
+rules) to force strict output structures such as JSON with specific keys.</p>
+<hr />
+<h2>Section 4 — Model Types &amp; Choosing Between Them</h2>
+<table>
+<thead>
+<tr>
+<th>Model type</th>
+<th>What it does</th>
+<th>Choose it when</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>LLM</strong> (large language model)</td>
+<td>General text understanding &amp; generation</td>
+<td>Broad, capable text tasks</td>
+</tr>
+<tr>
+<td><strong>SLM</strong> (small language model, e.g. Phi family, "mini" models)</td>
+<td>Compact, fast, cheap</td>
+<td><strong>Simple, high-volume</strong> tasks (e.g. classifying millions of short texts) and constrained devices</td>
+</tr>
+<tr>
+<td><strong>Reasoning models</strong> (o-series)</td>
+<td>Extended multi-step logical reasoning</td>
+<td>Complex math / multi-step logic</td>
+</tr>
+<tr>
+<td><strong>Multimodal model</strong></td>
+<td><strong>Understands</strong> more than one input type — e.g. an image + a question; some support <strong>audio in / audio out in real time</strong></td>
+<td>Ad-hoc questions about an image; single-model voice assistants</td>
+</tr>
+<tr>
+<td><strong>Image-generation model</strong> (DALL-E-3 / gpt-image family)</td>
+<td><strong>Creates</strong> new images from a text prompt</td>
+<td>"Generate a picture of…"</td>
+</tr>
+<tr>
+<td><strong>Video-generation model</strong> (sora family)</td>
+<td>Creates video from prompts — runs as an <strong>asynchronous job</strong> you poll</td>
+<td>Video creation</td>
+</tr>
+<tr>
+<td><strong>Embeddings model</strong> (text-embedding family)</td>
+<td>Converts text into meaning <strong>vectors</strong> — it never generates prose</td>
+<td>Semantic search, RAG retrieval</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><strong>Trap pair:</strong> a <em>multimodal</em> model <strong>understands</strong> images you give it; an <em>image-generation</em>
+model <strong>creates</strong> images. Different tools for different directions.
+<strong>Trap pair 2:</strong> big/reasoning models for hard problems; <strong>small models for cheap, fast,
+simple, high-volume</strong> work.</p>
+</blockquote>
+<hr />
+<h2>Section 5 — Deployment Types &amp; Hosting Options</h2>
+<table>
+<thead>
+<tr>
+<th>Option</th>
+<th>Pricing / hosting</th>
+<th>Best for</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Standard</strong></td>
+<td>Pay-per-token, regional</td>
+<td>General interactive use</td>
+</tr>
+<tr>
+<td><strong>Global Standard</strong></td>
+<td>Pay-per-token, routed across Microsoft's <strong>global capacity</strong></td>
+<td><strong>Spiky/unpredictable traffic</strong> needing best availability without reserved capacity</td>
+</tr>
+<tr>
+<td><strong>Provisioned Throughput (PTU)</strong></td>
+<td><strong>Reserved, dedicated capacity</strong></td>
+<td><strong>Steady high-volume production</strong> needing predictable latency</td>
+</tr>
+<tr>
+<td><strong>Batch</strong></td>
+<td>Asynchronous bulk processing at reduced cost</td>
+<td><strong>Huge offline jobs</strong> where nobody waits (e.g. millions of documents overnight)</td>
+</tr>
+<tr>
+<td><strong>Serverless API / Models-as-a-Service (MaaS)</strong></td>
+<td>Call partner/open models (Llama, Mistral…) via API, <strong>no infrastructure to manage</strong></td>
+<td>Using open models without hosting anything</td>
+</tr>
+<tr>
+<td><strong>Managed compute</strong></td>
+<td>Model hosted on <strong>dedicated VMs you control</strong> in Azure</td>
+<td><strong>Custom/fine-tuned models</strong> and strict control/compliance requirements</td>
+</tr>
+</tbody>
+</table>
+<p>Also remember the general deployment considerations: <strong>deployment type</strong> (where data is
+processed / how you pay), <strong>version</strong> (+ auto-update policy), <strong>rate limits</strong> (tokens-per-minute
+throughput; exceeding causes throttling), <strong>guardrails</strong> (responsible-AI policies).</p>
+<hr />
+<h2>Section 6 — Embeddings, Vector Search &amp; RAG</h2>
+<p><strong>Embedding</strong> — a numeric <strong>vector representing the meaning</strong> of text (or other content).
+Similar meanings → nearby vectors. Powers semantic search, recommendations, and RAG retrieval.</p>
+<p><strong>Vector index</strong> — a store (e.g. <strong>Azure AI Search</strong>) that retrieves items by vector
+similarity instead of exact keywords → <strong>semantic search</strong> ("find by meaning").</p>
+<p><strong>Chunking</strong> — splitting long documents into smaller passages before embedding, so retrieval
+returns focused, context-window-sized pieces.</p>
+<p><strong>Hallucination</strong> — output that <em>sounds plausible but is factually wrong or fabricated</em>.
+It happens because LLMs predict likely next tokens from learned patterns — they do not look
+facts up. It is <strong>not</strong> a network error, a filter refusal, or a truncated answer.</p>
+<p><strong>Grounding</strong> — supplying authoritative source material in the prompt so the model answers
+from facts rather than memory.</p>
+<p><strong>RAG (Retrieval-Augmented Generation)</strong> — the standard grounding architecture:</p>
+<ol>
+<li>Chunk and <strong>embed</strong> your documents into a <strong>vector index</strong> (done ahead of time).</li>
+<li>At query time, embed the user's question and <strong>retrieve</strong> the most similar chunks.</li>
+<li>Inject those chunks into the prompt (grounding) and let the model answer <strong>from them</strong>.</li>
+</ol>
+<p>RAG is the standard mitigation for hallucinations <em>and</em> the standard way to answer over content
+far larger than the context window. Raising temperature makes hallucination worse; raising
+max_tokens only changes length — neither is a fix.</p>
+<hr />
+<h2>Section 7 — Agents &amp; the Foundry Agent Service</h2>
+<p><strong>The agent equation:</strong> <strong>agent = model + instructions + tools</strong> (+ optional knowledge).</p>
+<ul>
+<li><strong>Model</strong> — language understanding and reasoning.</li>
+<li><strong>Instructions</strong> — the agent's system-prompt-like job description: persona, task, rules.</li>
+<li><strong>Tools</strong> — capabilities the agent can invoke:</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Tool</th>
+<th>What it enables</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>File search / knowledge</strong></td>
+<td>Retrieves passages from uploaded documents to ground answers — the agent-world equivalent of RAG</td>
+</tr>
+<tr>
+<td><strong>Code interpreter</strong></td>
+<td>Writes and runs Python in a sandbox — load a CSV, compute statistics, draw charts</td>
+</tr>
+<tr>
+<td><strong>Function calling</strong></td>
+<td>Lets the agent invoke <strong>your</strong> registered APIs/functions to take real actions (book, create, update)</td>
+</tr>
+</tbody>
+</table>
+<p><strong>How function calling actually works</strong> — the model never executes your code. It emits a
+<em>structured function call</em> (function name + JSON arguments); your application or the Agent
+Service executes the function <strong>outside the model</strong> and returns the result so the model can
+finish its answer.</p>
+<p><strong>Agent Service lifecycle vocabulary:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Object</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Agent</strong></td>
+<td>The definition (model + instructions + tools)</td>
+</tr>
+<tr>
+<td><strong>Thread</strong></td>
+<td>A conversation container holding messages</td>
+</tr>
+<tr>
+<td><strong>Message</strong></td>
+<td>One user or assistant turn added to a thread</td>
+</tr>
+<tr>
+<td><strong>Run</strong></td>
+<td>One <em>execution</em> of the agent over a thread — the agent reasons, possibly calls tools, and writes its reply back to the thread</td>
+</tr>
+</tbody>
+</table>
+<p>The natural order of operations follows from the definitions: you must have an agent and a
+thread before you can add messages; a run executes over what the thread contains; replies are
+read from the thread after the run.</p>
+<hr />
+<h2>Section 8 — Safety, Guardrails &amp; Responsible AI</h2>
+<p><strong>Content filters</strong> (Azure AI Content Safety) — screen prompts and completions for harmful
+<strong>content categories</strong> (hate, violence, sexual, self-harm) with <strong>adjustable severity
+thresholds</strong> per category. Legitimate specialist domains (e.g. medical education) may need the
+thresholds reviewed and tuned — that is what the configuration exists for.</p>
+<p><strong>Prompt shields</strong> — a <em>different</em> protection: they defend against <strong>prompt-injection and
+jailbreak attacks</strong> — attempts to hijack the model's instructions. Filters police <em>content</em>;
+shields police <em>attacks</em>. They are not the same feature.</p>
+<p><strong>Prompt injection / jailbreak</strong> — adversarial input crafted to override the system's rules.</p>
+<h3>The six Responsible AI principles (with the classic traps)</h3>
+<table>
+<thead>
+<tr>
+<th>Principle</th>
+<th>One-liner</th>
+<th>Trap to avoid</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Fairness</strong></td>
+<td>No biased <em>outcomes</em> across groups — identical profiles must get consistent decisions</td>
+<td>Don't confuse with inclusiveness</td>
+</tr>
+<tr>
+<td><strong>Reliability &amp; safety</strong></td>
+<td>The <strong>system</strong> behaves consistently and safely, even in unexpected conditions; test rigorously</td>
+<td>Don't confuse with accountability</td>
+</tr>
+<tr>
+<td><strong>Privacy &amp; security</strong></td>
+<td>Protect data in training <em>and</em> operation</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>Inclusiveness</strong></td>
+<td>AI should empower everyone, <strong>including people of all abilities</strong> (accessibility)</td>
+<td>It's about who benefits, not about decision bias</td>
+</tr>
+<tr>
+<td><strong>Transparency</strong></td>
+<td>Purpose, behavior and limitations must be understandable</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>Accountability</strong></td>
+<td><strong>People/organizations</strong> stay answerable — governance boards, named owners, escalation and override processes</td>
+<td>It's about people, not system robustness</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>Section 9 — Evaluation &amp; Quality</h2>
+<p><strong>Groundedness</strong> — measures whether a response is actually <strong>supported by the supplied source
+data</strong>. The essential pre-release metric for a RAG application: a fluent answer can still be
+fabricated.</p>
+<p><strong>Fluency</strong> — language quality: grammar, readability. Says nothing about truth.</p>
+<p><strong>Coherence</strong> — logical flow and consistency of the response. Also says nothing about truth.</p>
+<p><strong>Relevance</strong> — how well the answer addresses the question asked.</p>
+<p><strong>Token usage</strong> — a <strong>cost/consumption</strong> measure, not a quality metric.</p>
+<p><strong>Reproducibility</strong> — for regression testing, fix the <strong>seed</strong> and keep inputs/parameters
+identical (often with temperature 0) so nightly runs are comparable.</p>
+<hr />
+<h2>Section 10 — Speech</h2>
+<table>
+<thead>
+<tr>
+<th>Capability</th>
+<th>Direction</th>
+<th>Example uses</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Speech recognition (speech-to-text, STT)</strong></td>
+<td>Audio → text</td>
+<td>Transcription of recordings/meetings, captions/subtitles, voice commands</td>
+</tr>
+<tr>
+<td><strong>Speech synthesis (text-to-speech, TTS)</strong></td>
+<td>Text → audio</td>
+<td>Reading answers aloud, IVR, screen readers, alerts</td>
+</tr>
+<tr>
+<td><strong>Speech translation</strong></td>
+<td>Spoken language A → text/speech in language B</td>
+<td>Multilingual kiosks and assistants</td>
+</tr>
+<tr>
+<td><strong>Speaker recognition</strong></td>
+<td>Identifies/verifies <strong>who</strong> is speaking</td>
+<td>Voice verification — note it does <em>not</em> transcribe what was said</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Neural voices</strong> — natural-sounding synthetic voices used by TTS.</p>
+<p><strong>SSML (Speech Synthesis Markup Language)</strong> — markup for fine-tuning a synthetic voice's
+pronunciation, pitch, rate and prosody. It tunes <em>how</em> speech sounds; it doesn't translate or
+transcribe anything.</p>
+<p><strong>Pipeline vocabulary</strong> — recognition: audio capture → feature extraction → <strong>acoustic model</strong>
+(features → <strong>phonemes</strong>, the smallest units of sound) → <strong>language model</strong> (most probable word
+sequence) → post-processing. Synthesis: text → <strong>normalization</strong> (expand "Dr.", "3:00pm") →
+phonemes → <strong>prosody</strong> (natural cadence) → waveform.</p>
+<p><strong>Realtime / audio multimodal models</strong> — a single model that accepts speech in and produces
+speech out (e.g. GPT-4o-audio-style, or Foundry's Voice Live experience), replacing the chained
+STT → text model → TTS pipeline, with continuous conversation and interruption handling.</p>
+<hr />
+<h2>Section 11 — Information Extraction &amp; Azure Content Understanding</h2>
+<p><strong>Information extraction</strong> — analyzing unstructured content (documents, images, audio, video)
+to pull out <strong>structured fields and values</strong>.</p>
+<p><strong>OCR (optical character recognition)</strong> — converts <em>images of text</em> into machine-readable
+text. Reading only — no understanding of what the values mean.</p>
+<p><strong>Azure Content Understanding</strong> — Foundry's single <strong>multimodal extraction service</strong>. It goes
+beyond OCR by understanding document structure and <strong>mapping extracted data to a defined
+schema</strong>, returning structured <strong>JSON with confidence scores</strong>. It covers the scenarios that
+older separate products (Document Intelligence / Form Recognizer for documents, Video Indexer
+for media) handled.</p>
+<p><strong>Analyzer</strong> — the artifact that defines <em>how content is processed and what structured data
+comes back</em>. <strong>Predefined analyzers</strong> cover common documents (invoices, receipts, contracts)
+and call/video scenarios; <strong>custom analyzers</strong> are built by defining your own <strong>field schema</strong>
+from sample content.</p>
+<p><strong>Field schema</strong> — the explicit list of fields (e.g. <code>vendor_name</code>, <code>invoice_date</code>,
+<code>total_amount</code>) an analyzer extracts. This — not a system message or a filter — is what
+determines the returned fields.</p>
+<p><strong>Confidence score</strong> — per-field certainty value enabling human-in-the-loop review: auto-accept
+high confidence, route low confidence to a person.</p>
+<p><strong>Asynchronous analysis</strong> — with the SDK you submit content and then <strong>poll a URL until the
+job completes</strong>; results are not returned in the same request.</p>
+<blockquote>
+<p><strong>The repeatability rule of thumb:</strong> the <em>same structured fields, extracted repeatedly, at
+scale</em> → build a Content Understanding <strong>analyzer</strong>. A <em>one-off question about a single item</em>
+(one photo, one page) → just <strong>prompt a multimodal model</strong>. Ad-hoc prompting doesn't scale to
+pipelines; building an analyzer for one photo is overkill.</p>
+</blockquote>
+<hr />
+<h2>Section 12 — Legacy → Current Service Map</h2>
+<table>
+<thead>
+<tr>
+<th>Legacy product (AI-900 era)</th>
+<th>Current capability (AI-901 era)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Azure AI Studio</td>
+<td><strong>Microsoft Foundry</strong></td>
+</tr>
+<tr>
+<td>LUIS (Language Understanding)</td>
+<td><strong>Conversational Language Understanding (CLU)</strong></td>
+</tr>
+<tr>
+<td>QnA Maker</td>
+<td><strong>Custom question answering</strong> (QnA Maker itself is retired)</td>
+</tr>
+<tr>
+<td>Form Recognizer / Document Intelligence scenarios</td>
+<td><strong>Azure Content Understanding</strong></td>
+</tr>
+<tr>
+<td>Video Indexer scenarios</td>
+<td><strong>Azure Content Understanding</strong></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>Section 13 — Commonly Confused Pairs (last-minute revision)</h2>
+<table>
+<thead>
+<tr>
+<th>Pair</th>
+<th>The distinction in one line</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>temperature vs max_tokens</strong></td>
+<td>randomness vs output length</td>
+</tr>
+<tr>
+<td><strong>frequency vs presence penalty</strong></td>
+<td>stop repeating vs move to new topics</td>
+</tr>
+<tr>
+<td><strong>token vs embedding vs seed</strong></td>
+<td>text unit vs meaning vector vs reproducibility knob</td>
+</tr>
+<tr>
+<td><strong>content filter vs prompt shield</strong></td>
+<td>harmful content categories vs injection/jailbreak attacks</td>
+</tr>
+<tr>
+<td><strong>hub vs project vs deployment</strong></td>
+<td>shared workspace vs solution workspace vs callable model</td>
+</tr>
+<tr>
+<td><strong>base model name vs deployment name</strong></td>
+<td>catalog label vs the name <em>your code must call</em></td>
+</tr>
+<tr>
+<td><strong>multimodal vs image-generation model</strong></td>
+<td>understands images vs creates images</td>
+</tr>
+<tr>
+<td><strong>STT vs TTS vs translation vs speaker recognition</strong></td>
+<td>transcribe vs speak vs change language vs identify the voice</td>
+</tr>
+<tr>
+<td><strong>groundedness vs fluency/coherence</strong></td>
+<td>supported by sources vs merely well-written</td>
+</tr>
+<tr>
+<td><strong>PTU vs Global Standard vs Batch</strong></td>
+<td>reserved capacity vs global pay-per-token vs offline bulk</td>
+</tr>
+<tr>
+<td><strong>Serverless (MaaS) vs managed compute</strong></td>
+<td>no infrastructure vs dedicated VMs you control</td>
+</tr>
+<tr>
+<td><strong>fairness vs inclusiveness</strong></td>
+<td>unbiased outcomes vs empowering all abilities</td>
+</tr>
+<tr>
+<td><strong>reliability &amp; safety vs accountability</strong></td>
+<td>the <em>system</em> behaves safely vs <em>people</em> are answerable</td>
+</tr>
+<tr>
+<td><strong>hallucination vs filter block vs length cut-off</strong></td>
+<td>fabricated content vs safety refusal vs <code>finish_reason: length</code></td>
+</tr>
+<tr>
+<td><strong>analyzer vs one-off multimodal prompt</strong></td>
+<td>repeatable schema extraction vs single ad-hoc question</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p><em>Original reference material authored from public Microsoft Learn documentation for the AI-901
+faculty study kit. Definitions only — no test questions or answers are reproduced here.</em></p></body></html>
